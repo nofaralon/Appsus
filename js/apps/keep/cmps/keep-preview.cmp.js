@@ -1,14 +1,20 @@
+import noteTxt from "./note-txt.cmp.js"
+import noteImg from "./note-img.cmp.js"
+import noteTodos from "./note-todos.cmp.js"
+
 export default {
     props: ['keep'],
     template: `
-    <section>
-        <component is:></component>
+    <section v-if="cmpType">
+        <component :is="cmpType" :keep="keep" :style="style"></component>
     </section>
     `,
     data() {
         return {
             cmpType: null,
             isPinned: false,
+            <<
+            << << < HEAD
             info: [],
             style: {},
             style: null
@@ -41,4 +47,20 @@ export default {
 
 
 
+    ===
+    === =
+    style: null
+}
+},
+created() {
+        this.cmpType = this.keep.type
+        this.isPinned = this.keep.isPinned || false
+    },
+    methods: {},
+    components: {
+        noteTxt,
+        noteImg,
+        noteTodos,
+    } >>>
+    >>> > e6e83080897893ce949e35267c3abe760cd8b6e9
 }

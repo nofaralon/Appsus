@@ -14,3 +14,15 @@
     /* position: fixed; */
     width: 200px;
 }
+
+.note-img{
+    max-width: 100%;
+    max-height: 250px;
+}
+.note-img img{
+    height: 200px;
+}
+
+.keep-preview-container{
+    list-style: none;
+}
