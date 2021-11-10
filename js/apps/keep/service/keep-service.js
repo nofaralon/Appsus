@@ -35,6 +35,12 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
       ],
     },
   },
+  {
+    id: "n104",
+    type: "note-vid",
+    info: { url:"https://www.youtube.com/embed/MnuwI7G_huw", title: "Latte and Me" },
+    style: { backgroundColor: "#00d" },
+  },
 ];
 _save()
 console.log(gKeeps)

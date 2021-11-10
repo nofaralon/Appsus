@@ -1,6 +1,7 @@
 import noteTxt from "./note-txt.cmp.js"
 import noteImg from "./note-img.cmp.js"
 import noteTodos from "./note-todos.cmp.js"
+import noteVid from "./note-video.cmp.js"
 
 export default {
     props: ['keep'],
@@ -30,5 +31,6 @@ export default {
             noteTxt,
             noteImg,
             noteTodos,
+            noteVid
         }
 }
