@@ -26,7 +26,7 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt: new Date().toString(),
+                sentAt: new Date().toLocaleString(),
                 to: 'nofar@momo.com'
             },
             {
@@ -34,7 +34,7 @@ function _createMails() {
                 subject: 'How are you?',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt: Date.now(),
+                sentAt: new Date().toLocaleString(),
                 to: 'yahav@momo.com'
             },
             {
@@ -42,7 +42,7 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt: Date.now(),
+                sentAt: new Date().toLocaleString(),
                 to: 'sharon@momo.com'
             },
             {
@@ -50,7 +50,7 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt: Date.now(),
+                sentAt: new Date().toLocaleString(),
                 to: 'mimi@momo.com'
             },
 

@@ -1,13 +1,14 @@
 import { mailsService } from '../apps/mail/service/mail - service.js';
 import mailList from '../apps/mail/cmps/mail-list.cmp.js'
+import mailFilter from '../apps/mail/cmps/mail-filter.cmp.js'
 
 
 
 export default {
     template: `
     <section class="mail-app">
-        <!-- <mail-filter  @filtered="setFilter" /> -->
-        <mail-list  :mails="mails"/>
+        <mail-filter  @filtered="setFilter" />
+        <mail-list  :mails="mailsToShow"/>
     </section>
     `,
     data() {
@@ -28,29 +29,30 @@ export default {
                     console.log(this.mails);
                 });
         },
-        // setFilter(filterBy) {
-        //     this.filterBy = filterBy;
-        // },
+        setFilter(filterBy) {
+            this.filterBy = filterBy;
+        },
 
 
     },
     computed: {
-        // booksToShow() {
-        //     if (!this.filterBy) return this.books;
+        mailsToShow() {
+            if (!this.filterBy) return this.mails;
 
-        //     const searchStr = this.filterBy.title.toLowerCase();
-        //     const minPrice = (this.filterBy.minPrice) ? this.filterBy.minPrice : 0
-        //     const maxPrice = (this.filterBy.maxPrice) ? this.filterBy.maxPrice : Infinity
+            const searchStr = this.filterBy.subject.toLowerCase();
+            const read = this.filterBy.read
 
-        //     const filterBook = this.books.filter(book => {
-        //         return book.title.toLowerCase().includes(searchStr) && book.listPrice.amount >= minPrice && book.listPrice.amount <= maxPrice
-        //     })
 
-        //     return filterBook;
-        // }
+            const filterMail = this.mails.filter(mail => {
+                return mail.subject.toLowerCase().includes(searchStr) && mail.isRead === read
+            })
+
+            return filterMail;
+        }
 
     },
     components: {
-        mailList
+        mailList,
+        mailFilter
     }
 };

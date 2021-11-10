@@ -1,44 +1,44 @@
 export default {
     props: ['keep'],
-    template:`
+    template: `
     <section>
         <component is:></component>
     </section>
     `,
-    data(){
-        return{
-            cmpType:null,
+    data() {
+        return {
+            cmpType: null,
             isPinned: false,
-            info:[],
-            style:{},
-            style:null
+            info: [],
+            style: {},
+            style: null
 
         }
     },
-    created(){
-        this.cmpType=this.keep.type.split("-")[1]
-        this.isPinned=this.keep.isPinned || false
-        this.style=this.keep.style || null
+    created() {
+        this.cmpType = this.keep.type.split("-")[1]
+        this.isPinned = this.keep.isPinned || false
+        this.style = this.keep.style || null
         this.setType()
-        
+
     },
-    methods:{
-        setType(){
-            if(this.cmpType==='txt'){
-                this.info=this.keep.info.txt
+    methods: {
+        setType() {
+            if (this.cmpType === 'txt') {
+                this.info = this.keep.info.txt
                 console.log(this.info);
-            }else if(this.cmpType==='img'){
-                this.info={
-                    title:this.keep.info.title,
+            } else if (this.cmpType === 'img') {
+                this.info = {
+                    title: this.keep.info.title,
                     url: this.keep.info.url
                 }
-            }else{
+            } else {
 
             }
-                console.log(this.info);
-            }
+            console.log(this.info);
         }
+    }
 
 
-    },
+
 }
