@@ -24,10 +24,15 @@ export default {
             <button>trash</button>
         </div>
     </div>
-
+                            <div class="add-keep">
+                                <form @submit.prevent="addKeep">
+                                    <input type="text" placeholder="Add a note">
+                                </form>
+                            </div>
     <div class="keeps">
         <ul>
             <li v-for="keep in keeps" :key="keep.id" class="keep-preview-container">
+                <button>X</button>
                 <keep-preview :keep="keep"/>
             </li>
         </ul>

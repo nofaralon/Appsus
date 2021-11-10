@@ -19,7 +19,7 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
   {
     id: "n102",
     type: "note-img",
-    info: { url: "http://some-img/me", title: "Bobi and Me" },
+    info: { url: "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg", title: "Bobi and Me" },
     style: { backgroundColor: "#00d" },
   },
   {
