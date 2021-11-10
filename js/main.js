@@ -1,22 +1,25 @@
-import keepApp from "./apps/keep/pages/keep-app.cmp.js";
+import appHeader from './cmps/app-header.cmp.js';
+import appFooter from './cmps/app-footer.cmp.js';
+import { router } from './routes.js';
+import userMsg from './cmps/user-msg.cmp.js';
 
-const options={
+
+const options = {
     el: '#app',
     router,
     template: `
         <section>
-        <keep-app/>
-        <!-- <user-msg/>
-        <app-header/> -->
-        <!-- <router-view /> -->
+            <user-msg />    
+            <app-header />
+            <router-view />
+            <app-footer />
         </section>
     `,
-
-components: {
-keepApp,
-// appHeader,
-// userMsg
-}
-
+    components: {
+        appHeader,
+        appFooter,
+        userMsg
+    }
 };
+
 new Vue(options);
