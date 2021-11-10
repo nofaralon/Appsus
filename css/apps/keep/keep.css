@@ -1,0 +1,16 @@
+.svg-inline--fa {
+    height: 20px;
+    width: 20px;
+}
+.side-bar-btn button {
+    background: none;
+    border: none;
+}
+.side-bar-btn{
+    padding: 10px;
+    
+}
+.side-bar{
+    /* position: fixed; */
+    width: 200px;
+}

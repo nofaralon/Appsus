@@ -1,7 +1,6 @@
-import { storageService } from "./async-storage-service.js";
-import { utilService } from "./util-service.js";
-
-export const bookService = {
+import { storageService } from "../../../service/async-storage-service.js";
+import { utilService } from "../../../service/util-service.js";
+export const keepService = {
   query,
   bookById,
   saveReview,
@@ -35,8 +34,8 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
     },
   },
 ];
-_save
-
+_save()
+console.log(gKeeps)
 function saveSearch(key, value) {
   utilService.saveToStorage(key, value);
 }
