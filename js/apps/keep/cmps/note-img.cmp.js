@@ -25,6 +25,7 @@ export default{
             title:this.keep.info.title,
             url: this.keep.info.url
         }
+        console.log(this.info);
     },
     methods:{
         editTxt(){

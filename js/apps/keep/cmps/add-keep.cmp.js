@@ -19,22 +19,31 @@ export default {
     </div>
     <form v-if="isText" @submit.prevent="addKeep">
         <input type="text" placeholder="Add a note" v-model="keep.info.txt">
+        <br>
+    <button>Add</button>
 </form>        
 
     <form v-if="isImg" @submit.prevent="addKeep">
-    <input type="text" placeholder="title" v-model="keep.title">
+    <input type="text" placeholder="title" v-model="keep.info.title">
     <br>
-    <input type="text" placeholder="image url" v-model="keep.info">        
+    <input type="text" placeholder="image url" v-model="keep.info.url">
+    <br>
+    <button>Add</button>        
     </form> 
         <form v-if="isVideo" @submit.prevent="addKeep">
             <input type="text" placeholder="title" v-model="keep.info.title">
             <br>
-            <input type="text" placeholder="video url" v-model="keep.info.url">                         
+            <input type="text" placeholder="video url" v-model="keep.info.url"> 
+            <br>
+            <button>Add</button>                        
         </form> 
         <form v-if="isTodos" @submit.prevent="addKeep">
-            <input type="text" placeholder="label" v-model="keep.label">
+            <input type="text" placeholder="label" v-model="keep.info.label">
             <br>
-            <textArea type="text" placeholder="list what you need to do and separate with a ','" v-model="keep.info.todos" rows="6" cols="33"></textArea>                         
+            <input type='text' v-model="keep.info.todos">
+            <!-- <textArea v-model="keep.info.todos"></textArea> -->
+            <br>
+            <button>Add</button>                        
         </form> 
 </div>
 
@@ -46,9 +55,9 @@ export default {
       isTodos: false,
       isVideo: false,
       isImg: false,
+      todos:null,
       keep: {
         info: {
-            todos:{}
         },
         
       },
@@ -57,8 +66,27 @@ export default {
   methods: {
     addKeep() {
       this.keep.id = utilService.makeId();
-      this.keep.type = "note-txt";
-      console.log(this.keep);
+      if(this.isText){
+          this.keep.type = "note-txt";
+      }else if(this.isTodos){
+          this.keep.type = "note-todos";
+          if(this.keep.info.todos.indexOf(',')!==-1){
+            this.keep.info.todos=this.keep.info.todos.split(',')
+          }else{
+            this.keep.info.todos=this.keep.info.todos.split("")
+          }
+            this.keep.info.todos=this.keep.info.todos.map(todo=>{
+                var txt={
+                   txt:todo
+               }
+               return txt
+           })
+            // this.keep.info.todos.txt=str
+      }else if(this.isImg){
+        this.keep.type = "note-img";
+    }else{
+        this.keep.type = "note-vid";
+    }
       keepService.addKeep(this.keep);
       // const msg = {
       //     txt: 'keep added.',
@@ -66,6 +94,7 @@ export default {
       // };
       // eventBus.$emit('showMsg', msg)
       this.$emit("added");
+      this.clear();
     },
     on() {
       this.isOn = !this.isOn;
@@ -76,6 +105,14 @@ export default {
       this.isVideo = false;
       this.isImg = false;
     },
+    clear(){
+        this.keep = {
+            info: {
+                todos:""
+                },
+        }
+    },
+
     setTxt() {
       this.setFalse();
       this.isText = true;
