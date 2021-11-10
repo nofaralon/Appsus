@@ -1,4 +1,18 @@
-.mails-container td {
+.mail-preview-container {
+    display: flex;
     border: 1px solid black;
-    width: 300px;
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.open-mail {
+    display: flex;
+    justify-content: space-between;
+}
+
+svg {
+    cursor: pointer;
 }

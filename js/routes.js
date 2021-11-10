@@ -14,6 +14,10 @@ const routes = [{
         component: mailApp
     },
     {
+        path: '/mail/:mailId',
+        component: mailDetails
+    },
+    {
         path: '/keep',
         component: keepApp
     }
