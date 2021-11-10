@@ -34,7 +34,7 @@ export default {
     },
     methods: {
         openFullMail() {
-            console.log('hi');
+            this.$router.push('/mail/' + this.mail.id)
         },
         openModal() {
             this.isOpen = !this.isOpen
