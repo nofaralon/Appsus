@@ -1,7 +1,7 @@
 export default{
     props:['keep'],
     template:`
-   <div class="note-txt">
+   <div class="note note-txt">
     <p @click="editTxt">{{info}}</p>
         <form @submit.prevent="editTxt">
             <input v-show="isEdit" v-model="info">

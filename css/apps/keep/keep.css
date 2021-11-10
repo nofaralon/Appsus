@@ -23,6 +23,16 @@
     height: 200px;
 }
 
-.keep-preview-container{
+.keep-preview{
     list-style: none;
+    border: solid 1px black;
+}
+
+.note> p{
+    margin: 1px;
+}
+
+.keep-list{
+    gap: 30px;
+    padding: 10px;
 }

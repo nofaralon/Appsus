@@ -1,11 +1,15 @@
 import { keepService } from "../apps/keep/service/keep-service.js"
 import keepList from "../apps/keep/cmps/keep-list.cmp.js"
+import addKeep from "../apps/keep/cmps/add-keep.cmp.js"
 
 
 
 export default {
     template:`
-    <keep-list :keeps="keepsToShow"/>
+    <div>
+        <add-keep @added="loadKeeps"/>
+        <keep-list :keeps="keepsToShow" @removed="loadKeeps"/>
+    </div>
     `,
     data(){
         return {
@@ -33,6 +37,7 @@ export default {
     components:{
         keepService,
         keepList,
+        addKeep,
     
     }
 }

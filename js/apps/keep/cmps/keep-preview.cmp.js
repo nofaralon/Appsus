@@ -4,45 +4,31 @@ import noteTodos from "./note-todos.cmp.js"
 
 export default {
     props: ['keep'],
-    template: `
+    template:`
     <section v-if="cmpType">
+    <button @click="removeKeep">X</button>
         <component :is="cmpType" :keep="keep" :style="style"></component>
     </section>
     `,
-    data() {
-        return {
-            cmpType: null,
+    data(){
+        return{
+            cmpType:null,
             isPinned: false,
-            info: [],
-            style: {},
-            style: null
-
+            style:null
         }
     },
-    created() {
-        this.cmpType = this.keep.type.split("-")[1]
-        this.isPinned = this.keep.isPinned || false
-        this.style = this.keep.style || null
-        this.setType()
-
+    created(){
+        this.cmpType=this.keep.type
+        this.isPinned=this.keep.isPinned || false
     },
-    methods: {
-        setType() {
-            if (this.cmpType === 'txt') {
-                this.info = this.keep.info.txt
-                console.log(this.info);
-            } else if (this.cmpType === 'img') {
-                this.info = {
-                    title: this.keep.info.title,
-                    url: this.keep.info.url
-                }
-            } else {
-
-            }
-            console.log(this.info);
+    methods:{
+        removeKeep(){
+            this.$emit('remove',this.keep.id);
         }
-    }
-
-
-
+        },
+        components:{
+            noteTxt,
+            noteImg,
+            noteTodos,
+        }
 }

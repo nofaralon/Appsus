@@ -2,9 +2,11 @@ import { storageService } from "../../../service/async-storage-service.js";
 import { utilService } from "../../../service/util-service.js";
 export const keepService = {
   query,
-  bookById,
+  keepById,
   saveReview,
   saveSearch,
+  addKeep,
+  removeKeep,
 };
 
 const KEEP_KEY = "keepsDB";
@@ -36,6 +38,17 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
 ];
 _save()
 console.log(gKeeps)
+
+function addKeep(keepToAdd){
+    gKeeps.push(keepToAdd)
+    _save()
+  }
+
+  function removeKeep(id){
+  return  storageService.remove(KEEP_KEY,id)
+  }
+
+
 function saveSearch(key, value) {
   utilService.saveToStorage(key, value);
 }
@@ -47,7 +60,7 @@ function saveReview(book) {
   return storageService.put(KEEP_KEY, book);
 }
 
-function bookById(id) {
+function keepById(id) {
   return storageService.get(KEEP_KEY, id);
 }
 function _save() {

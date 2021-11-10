@@ -1,11 +1,11 @@
 export default{
     props:['keep'],
     template:`
-   <div class="note-img" :style="style">
+   <div class="note note-img" :style="style">
     <h3 @click="editTxt">{{info.title}}</h3>
-       <div class="text-editor">
+       <div v-show="isEdit" class="text-editor">
             <form @submit.prevent="editTxt">
-                <input v-show="isEdit" v-model="info.title">
+                <input v-model="info.title">
             </form>
        </div>
     
