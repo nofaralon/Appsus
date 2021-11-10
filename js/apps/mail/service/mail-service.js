@@ -10,13 +10,16 @@ _createMails()
 
 export const mailsService = {
     query,
-
+    getById
 };
 
 function query() {
     return storageService.query(MAILS_KEY)
 }
 
+function getById(mailId) {
+    return storageService.get(MAILS_KEY, mailId);
+}
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);

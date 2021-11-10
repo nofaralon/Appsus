@@ -1,4 +1,4 @@
-import { mailsService } from '../apps/mail/service/mail - service.js';
+import { mailsService } from '../apps/mail/service/mail-service.js';
 import mailList from '../apps/mail/cmps/mail-list.cmp.js'
 import mailFilter from '../apps/mail/cmps/mail-filter.cmp.js'
 
