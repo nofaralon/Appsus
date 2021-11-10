@@ -13,8 +13,6 @@ export default {
         return {
             cmpType: null,
             isPinned: false,
-            <<
-            << << < HEAD
             info: [],
             style: {},
             style: null
@@ -47,20 +45,4 @@ export default {
 
 
 
-    ===
-    === =
-    style: null
-}
-},
-created() {
-        this.cmpType = this.keep.type
-        this.isPinned = this.keep.isPinned || false
-    },
-    methods: {},
-    components: {
-        noteTxt,
-        noteImg,
-        noteTodos,
-    } >>>
-    >>> > e6e83080897893ce949e35267c3abe760cd8b6e9
 }
