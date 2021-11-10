@@ -15,10 +15,10 @@ const routes = [{
         path: '/mail',
         component: mailApp
     },
-    // {
-        // path: '/mail/:mailId',
-        // component: mailDetails
-    // },
+    {
+        path: '/mail/:mailId',
+        component: mailDetails
+    },
     {
         path: '/keep',
         component: keepApp

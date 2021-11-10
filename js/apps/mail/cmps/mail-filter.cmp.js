@@ -4,9 +4,10 @@ export default {
             <label>Search: 
                 <input @input="filter" v-model="filterBy.subject" type="search" >
             </label>
-            <select v-model="filterBy.read">
-                <option>Read</option>
-                <option>Unread</option>
+            <select @change="filter" v-model="filterBy.isRead">
+                <option value= "all" >All</option>
+                <option value= "true" >Read</option>
+                <option value= "false" >Unread</option>
             </select>
         </div>
     `,
@@ -14,12 +15,13 @@ export default {
         return {
             filterBy: {
                 subject: '',
-                read: ''
+                isRead: ''
             }
         };
     },
     methods: {
         filter() {
+            console.log(this.filterBy);
             this.$emit('filtered', {...this.filterBy });
 
         }

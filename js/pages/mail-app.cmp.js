@@ -38,13 +38,13 @@ export default {
     computed: {
         mailsToShow() {
             if (!this.filterBy) return this.mails;
+            if (this.filterBy.isRead === 'all') return this.mails;
 
             const searchStr = this.filterBy.subject.toLowerCase();
-            const read = this.filterBy.read
-
+            var read = this.filterBy.isRead
 
             const filterMail = this.mails.filter(mail => {
-                return mail.subject.toLowerCase().includes(searchStr) && mail.isRead === read
+                return mail.subject.toLowerCase().includes(searchStr) && mail.isRead.toString() === read
             })
 
             return filterMail;
