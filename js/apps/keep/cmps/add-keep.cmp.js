@@ -40,8 +40,8 @@ export default {
         <form v-if="isTodos" @submit.prevent="addKeep">
             <input type="text" placeholder="label" v-model="keep.info.label">
             <br>
-            <input type='text' v-model="keep.info.todos">
-            <!-- <textArea v-model="keep.info.todos"></textArea> -->
+            <!-- <input type='text' v-model="keep.info.todos" placeholder="Enter comma separated list"> -->
+            <textarea v-model="keep.info.todos" placeholder="Enter comma separated list"></textarea>
             <br>
             <button>Add</button>                        
         </form> 
@@ -59,6 +59,7 @@ export default {
       keep: {
         info: {
         },
+        isPinned:false
         
       },
     };
