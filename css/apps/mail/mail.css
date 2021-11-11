@@ -110,3 +110,7 @@ svg {
 
 
 /* mail-details */
+
+.mail-details {
+    height: 88vh;
+}
