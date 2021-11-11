@@ -2,6 +2,7 @@ import { keepService } from "../apps/keep/service/keep-service.js";
 import keepList from "../apps/keep/cmps/keep-list.cmp.js";
 import addKeep from "../apps/keep/cmps/add-keep.cmp.js";
 import keepFilter from "../cmps/keep-filter.cmp.js";
+import { eventBus } from "../service/event-bus-service.js"
 
 export default {
   template: `
@@ -31,14 +32,29 @@ export default {
     pinKeep(id){
         keepService.pinKeep(id)
         .then(()=>this.loadKeeps())
+        const msg = {
+          txt: 'Added the pin',
+          type: 'success'
+      };
+      eventBus.$emit('showMsg', msg);
     },
     removePin(id){
         keepService.pinRemove(id)
         .then(()=>this.loadKeeps())
+        const msg = {
+          txt: 'Pin removed',
+          type: 'success'
+      };
+      eventBus.$emit('showMsg', msg);
     },
     duplicatePin(id){
         keepService.duplicate(id)
         .then(()=>this.loadKeeps())
+        const msg = {
+          txt: 'Keep duplicated',
+          type: 'success'
+      };
+      eventBus.$emit('showMsg', msg);
     },
     setFilter(filterBy) {
       this.filterBy = filterBy;
@@ -46,6 +62,11 @@ export default {
     removeKeep(id){
         keepService.removeKeep(id)
         .then(()=>this.loadKeeps())
+        const msg = {
+          txt: 'Keep removed',
+          type: 'success'
+      };
+      eventBus.$emit('showMsg', msg);
     },
   },
   computed: {
@@ -104,5 +125,6 @@ export default {
     keepList,
     addKeep,
     keepFilter,
+    eventBus
   },
 };

@@ -1,47 +1,94 @@
+*{
+    box-sizing: border-box;
+}
+.keep-filter{
+    display: flex;
+    justify-content: center;
+}
+.add-keep-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.add-keep{
+    /* position: absolute; */
+    top: 15px;
+}
+.add-input{
+    width: 395px;
+}
+
+.upper{
+    height: 25px;
+}
+
+.add-btn{
+    margin: 5px;
+}
+
+.funcs-container{
+    padding: 3px;
+}
+
 .svg-inline--fa {
     height: 20px;
     width: 20px;
 }
 
-.side-bar-btn button {
-    background: none;
-    border: none;
-}
-
-.side-bar-btn {
-    padding: 10px;
-}
-
-.side-bar {
-    /* position: fixed; */
-    width: 200px;
+.font-changer{
+    width: 80px;
 }
 
 .note-img {
-    max-width: 100%;
-    max-height: 250px;
+text-align: center;
 }
 
 .note-img img {
-    height: 200px;
+    height: 150px;
+    width: 150px;
+    padding: 5px;
+}
+.note-img h3{
+    margin: 1px;
 }
 
-.keep-preview {
+.note-video h3{
+    margin: 1px;
+}
+
+.keep-preview-container {
     list-style: none;
     border: solid 1px black;
 }
+
+.keep-preview-container >*{
+    height: 100%;
+}
+
 
 .note>p {
     margin: 1px;
 }
 
-.keep-list {
-    gap: 30px;
-    padding: 10px;
+.todos{
+    list-style: none;
 }
 
+.keeps ul{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(100px,200px));
+   grid-template-rows: repeat(auto-fit);
+   gap:15px;
+}
+
+
 .ylw{
-    color:rgb(231, 231, 63);
+    color:rgb(252, 252, 10);
 }
 
 .done{

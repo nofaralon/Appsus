@@ -9,7 +9,7 @@ export default{
             </form>
        </div>
     
-       <iframe width="420" height="315" :src="info.url">
+       <iframe width="200" height="200" :src="info.url">
 
        </iframe>
     </div>
