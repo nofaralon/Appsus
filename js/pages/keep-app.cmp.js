@@ -31,42 +31,47 @@ export default {
     },
     pinKeep(id){
         keepService.pinKeep(id)
-        .then(()=>this.loadKeeps())
-        const msg = {
-          txt: 'Added the pin',
-          type: 'success'
-      };
-      eventBus.$emit('showMsg', msg);
+        .then(()=>{this.loadKeeps()
+          const msg = {
+            txt: 'Added the pin',
+            type: 'success'
+        };
+        eventBus.$emit('showMsg', msg);
+        })
     },
     removePin(id){
         keepService.pinRemove(id)
-        .then(()=>this.loadKeeps())
-        const msg = {
-          txt: 'Pin removed',
-          type: 'success'
-      };
-      eventBus.$emit('showMsg', msg);
+        .then(()=>{this.loadKeeps()
+          const msg = {
+            txt: 'Pin removed',
+            type: 'success'
+        };
+        eventBus.$emit('showMsg', msg);         
+        })
     },
     duplicatePin(id){
         keepService.duplicate(id)
-        .then(()=>this.loadKeeps())
-        const msg = {
-          txt: 'Keep duplicated',
-          type: 'success'
-      };
-      eventBus.$emit('showMsg', msg);
+        .then(()=>{this.loadKeeps()
+          const msg = {
+            txt: 'Keep duplicated',
+            type: 'success'
+        };
+        eventBus.$emit('showMsg', msg);
+        })
     },
     setFilter(filterBy) {
       this.filterBy = filterBy;
     },
     removeKeep(id){
         keepService.removeKeep(id)
-        .then(()=>this.loadKeeps())
-        const msg = {
-          txt: 'Keep removed',
-          type: 'success'
-      };
-      eventBus.$emit('showMsg', msg);
+        .then(()=>{this.loadKeeps()
+          console.log('hi');
+          const msg = {
+            txt: 'Keep removed',
+            type: 'success'
+        };
+        eventBus.$emit('showMsg', msg);     
+        })
     },
   },
   computed: {
