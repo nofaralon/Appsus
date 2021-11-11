@@ -43,3 +43,7 @@
 .ylw{
     color:rgb(231, 231, 63);
 }
+
+.done{
+    text-decoration: line-through;
+}

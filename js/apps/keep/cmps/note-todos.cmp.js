@@ -10,8 +10,9 @@ export default{
                         <input v-show="isEdit" v-model="label">
                     </form>
            <ul>
-                <li v-for="todo in todos" class="note">
-                    <p @click="editTxt">{{todo.txt}} </p>
+                <li v-for="todo in todos" class="note" :key="todo.id">
+                  <input type="checkbox" @change="completedTask(todo)" :checked="todo.doneAt"> 
+                    <span :class="{done : todo.doneAt}" @click="editTxt">{{todo.txt}} </span>
                     <form @submit.prevent="editTxt">
                         <input v-show="isEdit" v-model="todo.txt">
                     </form>
@@ -37,6 +38,16 @@ export default{
    methods:{
     editTxt(){
         this.isEdit=!this.isEdit;
+    },
+    completedTask: function(todo){
+        todo.doneAt=!todo.doneAt
+    }
+    
+},
+computed:{
+    doneAt(todo){
+        console.log(todo);
+        
     }
 },
 components:{

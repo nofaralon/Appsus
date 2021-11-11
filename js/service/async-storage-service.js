@@ -4,7 +4,10 @@ export const storageService = {
     post,
     put,
     remove,
-    postMany
+    postMany,
+    pin,
+    pinRemove,
+    duplicate,
 }
 
 function query(entityType) {
@@ -52,6 +55,47 @@ function remove(entityType, entityId) {
             const idx = entities.findIndex(entity => entity.id === entityId);
             entities.splice(idx, 1)
             _save(entityType, entities)
+        })
+}
+
+function pin(entityType, entityId) {
+    return query(entityType)
+        .then(entities => {
+            const idx = entities.findIndex(entity => entity.id === entityId);
+            const keep = entities.splice(idx, 1)
+            keep[0].isPinned = true;
+            entities.unshift(keep[0])
+            _save(entityType, entities)
+        })
+}
+
+function pinRemove(entityType, entityId) {
+    return query(entityType)
+        .then(entities => {
+            const idx = entities.findIndex(entity => entity.id === entityId);
+            const keep = entities.splice(idx, 1)
+            keep[0].isPinned = false;
+            entities.push(keep[0])
+            _save(entityType, entities)
+        })
+}
+
+function duplicate(entityType, entityId) {
+    return query(entityType)
+        .then(entities => {
+            const idx = entities.findIndex(entity => entity.id === entityId);
+            const newEntities = [];
+            for (var i = 0; i < entities.length; i++) {
+                newEntities.push(entities[i])
+                if (i === idx) {
+                    newEntities.push(JSON.parse(JSON.stringify(entities[i])))
+                    newEntities[newEntities.length - 1].id = _makeId()
+                }
+
+            }
+            // console.log(newEntities);
+            _save(entityType, newEntities)
+            return newEntities
         })
 }
 

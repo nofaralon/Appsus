@@ -8,6 +8,8 @@ export const keepService = {
   addKeep,
   removeKeep,
   pinKeep,
+  pinRemove,
+  duplicate,
 };
 
 const KEEP_KEY = "keepsDB";
@@ -59,12 +61,21 @@ function addKeep(keepToAdd) {
   _save();
 }
 
+function duplicate(id){
+return storageService.duplicate(KEEP_KEY,id)
+}
+
 function removeKeep(id) {
   return storageService.remove(KEEP_KEY, id);
 }
 
+function pinRemove(id){
+  return storageService.pinRemove(KEEP_KEY, id)
+
+}
+
 function pinKeep(id) {
-  return storageService.put(KEEP_KEY, id).then(()=>console.log(gKeeps))
+  return storageService.pin(KEEP_KEY, id)
 }
 
 function saveSearch(key, value) {

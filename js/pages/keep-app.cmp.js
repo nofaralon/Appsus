@@ -8,7 +8,7 @@ export default {
     <div>
         <keep-filter @filtered="setFilter"/>
         <add-keep @added="loadKeeps"/>
-        <keep-list :keeps="keepsToShow" @removed="loadKeeps" />
+        <keep-list :keeps="keepsToShow" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
     </div>
     `,
   data() {
@@ -28,8 +28,24 @@ export default {
         console.log(this.keeps);
       });
     },
+    pinKeep(id){
+        keepService.pinKeep(id)
+        .then(()=>this.loadKeeps())
+    },
+    removePin(id){
+        keepService.pinRemove(id)
+        .then(()=>this.loadKeeps())
+    },
+    duplicatePin(id){
+        keepService.duplicate(id)
+        .then(()=>this.loadKeeps())
+    },
     setFilter(filterBy) {
       this.filterBy = filterBy;
+    },
+    removeKeep(id){
+        keepService.removeKeep(id)
+        .then(()=>this.loadKeeps())
     },
   },
   computed: {
