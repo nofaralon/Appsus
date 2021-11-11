@@ -4,9 +4,11 @@ export default {
     props: ['mails'],
     template: `
         <section class="mail-list">
-            <div  v-for="mail in mails" :key="mail.id" >
-                <mail-preview :mail="mail" />
-            </div>
+
+        <div  v-for="mail in mails" :key="mail.id" >
+            <mail-preview :mail="mail" />
+        </div>
+
         </section>
     `,
     methods: {

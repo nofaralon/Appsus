@@ -1,6 +1,9 @@
 import { mailsService } from '../apps/mail/service/mail-service.js';
 import mailList from '../apps/mail/cmps/mail-list.cmp.js'
 import mailFilter from '../apps/mail/cmps/mail-filter.cmp.js'
+import mailSideBar from '../apps/mail/cmps/mail-side-bar.cmp.js'
+import newMail from '../apps/mail/cmps/new-mail.cmp.js'
+
 
 
 
@@ -8,13 +11,16 @@ export default {
     template: `
     <section class="mail-app">
         <mail-filter  @filtered="setFilter" />
-        <mail-list  :mails="mailsToShow"/>
+        <mail-side-bar @new="open"></mail-side-bar>
+        <new-mail v-if="isNewMail" @addNewMail="addMail"></new-mail>
+        <mail-list v-if="!isNewMail":mails="mailsToShow"/>
     </section>
     `,
     data() {
         return {
             mails: null,
-            filterBy: null
+            filterBy: null,
+            isNewMail: false
         }
     },
     created() {
@@ -32,6 +38,9 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
+        open() {
+            this.isNewMail = !this.isNewMail
+        }
 
 
     },
@@ -48,11 +57,17 @@ export default {
             })
 
             return filterMail;
+        },
+
+        addMail() {
+            this.isNewMail = !this.isNewMail
         }
 
     },
     components: {
         mailList,
-        mailFilter
+        mailFilter,
+        mailSideBar,
+        newMail
     }
 };

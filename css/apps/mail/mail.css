@@ -16,3 +16,8 @@
 svg {
     cursor: pointer;
 }
+
+.new-mail form {
+    display: flex;
+    flex-direction: column;
+}
