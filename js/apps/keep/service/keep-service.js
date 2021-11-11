@@ -7,6 +7,7 @@ export const keepService = {
   saveSearch,
   addKeep,
   removeKeep,
+  pinKeep,
 };
 
 const KEEP_KEY = "keepsDB";
@@ -21,7 +22,11 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
   {
     id: "n102",
     type: "note-img",
-    info: { url: "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg", title: "Bobi and Me" },
+    info: {
+      url: "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+      title: "Bobi and Me",
+    },
+    isPinned: false,
     style: { backgroundColor: "#00d" },
   },
   {
@@ -34,26 +39,33 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
         { txt: "Coding power", doneAt: 187111111 },
       ],
     },
+    isPinned: false,
   },
   {
     id: "n104",
     type: "note-vid",
-    info: { url:"https://www.youtube.com/embed/MnuwI7G_huw", title: "Latte and Me" },
+    info: {
+      url: "https://www.youtube.com/embed/MnuwI7G_huw",
+      title: "Latte and Me",
+    },
+    isPinned: false,
     style: { backgroundColor: "#00d" },
   },
 ];
-_save()
-console.log(gKeeps)
+_save();
 
-function addKeep(keepToAdd){
-    gKeeps.push(keepToAdd)
-    _save()
-  }
+function addKeep(keepToAdd) {
+  gKeeps.push(keepToAdd);
+  _save();
+}
 
-  function removeKeep(id){
-  return  storageService.remove(KEEP_KEY,id)
-  }
+function removeKeep(id) {
+  return storageService.remove(KEEP_KEY, id);
+}
 
+function pinKeep(id) {
+  return storageService.put(KEEP_KEY, id).then(()=>console.log(gKeeps))
+}
 
 function saveSearch(key, value) {
   utilService.saveToStorage(key, value);

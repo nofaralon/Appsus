@@ -32,10 +32,9 @@ export default {
     <div class="keeps">
         <ul>
             <li v-for="keep in keeps" :key="keep.id" class="keep-preview-container">
-                <keep-preview :keep="keep" @remove="removeKeep"/>
+                <keep-preview :keep="keep" @remove="removeKeep" @pin="pinKeep"/>
             </li>
         </ul>
-
     </div>
 
     </section>
@@ -44,7 +43,13 @@ export default {
         removeKeep(id){
             keepService.removeKeep(id)
             .then(()=>this.$emit('removed'))
+        },
+        pinKeep(id){
+            console.log(id)
+            keepService.pinKeep(id)
+            // .then(()=>this.$emit('pinned'))
         }
+
     },
 
     components:{
