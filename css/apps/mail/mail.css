@@ -1,11 +1,46 @@
+svg {
+    cursor: pointer;
+}
+
+
+/* mail-app */
+
+.mail-app {
+    height: 100%;
+}
+
+.mail-app-container {
+    display: flex;
+    flex-direction: row;
+    height: 83vh;
+    padding-top: 20px;
+}
+
+
+/* mail-list */
+
+.mail-list {
+    flex-grow: 1;
+    padding-top: 70px;
+    max-width: 800px;
+}
+
+
+/* mail-preview */
+
 .mail-preview-container {
     display: flex;
     border: 1px solid black;
     justify-content: space-between;
+    height: 40px;
 }
 
 .bold {
     font-weight: 700;
+}
+
+.stared {
+    fill: chocolate;
 }
 
 .open-mail {
@@ -13,11 +48,65 @@
     justify-content: space-between;
 }
 
-svg {
-    cursor: pointer;
+
+/* mail-filter */
+
+.mail-filter {
+    padding-top: 20px;
+    padding-inline-start: 20px;
+}
+
+
+/* new-mail */
+
+.new-mail {
+    flex-grow: 1;
+    /* border: 1px solid black; */
+    max-width: 700px;
 }
 
 .new-mail form {
     display: flex;
     flex-direction: column;
 }
+
+.new-mail input {
+    width: 90%;
+    border: none;
+}
+
+.new-mail label {
+    border-bottom: 1px solid black;
+}
+
+.new-mail h3 {
+    background-color: lightgrey;
+}
+
+.new-mail-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* mail-side-bar */
+
+.mail-side-bar {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0;
+}
+
+.mail-side-bar-btn button {
+    background: none;
+    border: none;
+}
+
+.mail-side-bar-btn {
+    display: inline-block;
+    padding: 10px;
+}
+
+
+/* mail-details */

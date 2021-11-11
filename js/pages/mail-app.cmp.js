@@ -11,9 +11,12 @@ export default {
     template: `
     <section class="mail-app">
         <mail-filter  @filtered="setFilter" />
-        <mail-side-bar  @new="open"></mail-side-bar>
-        <new-mail v-if="isNewMail" @addNewMail="addMail"></new-mail>
-        <mail-list @staredMail="setMailStared" @removeMail="moveToRecycleBin" @read="updateMail" v-if="!isNewMail" :mails="mailsToShow"/>
+        <div class="mail-app-container">
+            <mail-side-bar  @new="open"></mail-side-bar>
+            <new-mail v-if="isNewMail" @addNewMail="addMail"></new-mail>
+            <mail-list @staredMail="setMailStared" @removeMail="moveToRecycleBin" @read="updateMail" v-if="!isNewMail" :mails="mailsToShow"/>
+
+        </div>
     </section>
     `,
     data() {

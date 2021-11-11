@@ -1,3 +1,79 @@
 @import "/css/apps/keep/keep.css";
 @import "/css/apps/mail/mail.css";
 @import "/css/helper.css";
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+h3,
+p {
+    margin: 0;
+}
+
+
+/* header */
+
+.app-header {
+    font-size: 18px;
+    padding: 10px;
+    background-color: rgb(145, 147, 148);
+    display: flex;
+    justify-content: space-between;
+    color: aliceblue;
+}
+
+.app-header a {
+    color: aliceblue;
+}
+
+.app-header a:hover {
+    color: rgb(142, 196, 240);
+}
+
+.logo {
+    font-size: 20px;
+}
+
+
+/* footer */
+
+.app-footer {
+    color: aliceblue;
+    padding: 10px;
+    background-color: rgb(145, 147, 148);
+    text-align: center;
+}
+
+.apps {
+    height: 100%;
+}
+
+
+/* user msg */
+
+.user-msg {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    padding: 10px;
+    height: 40px;
+    width: 240px;
+    background-color: rgba(255, 252, 242, 0.753);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.success {
+    border: 2px solid green;
+    color: green;
+}
+
+.error {
+    border: 2px solid red;
+    color: red;
+}
