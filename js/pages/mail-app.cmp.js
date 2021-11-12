@@ -4,15 +4,17 @@ import mailFilter from '../apps/mail/cmps/mail-filter.cmp.js'
 import mailSideBar from '../apps/mail/cmps/mail-side-bar.cmp.js'
 import newMail from '../apps/mail/cmps/new-mail.cmp.js'
 import { eventBus } from '../service/event-bus-service.js';
+import mailSort from '../apps/mail/cmps/mail-sort.cmp.js'
 
 
 
 export default {
     template: `
-    <section class="mail-app">
+    <section class="mail-app main-layout">
         <mail-filter  @filtered="setFilter" />
+        <mail-sort @sort="sorting"></mail-sort>
         <div class="mail-app-container">
-            <mail-side-bar  @new="open"></mail-side-bar>
+            <mail-side-bar :counter="counterMail"  @sideBar="search" @new="open"></mail-side-bar>
             <new-mail v-if="isNewMail" @addNewMail="addMail"></new-mail>
             <mail-list @staredMail="setMailStared" @removeMail="moveToRecycleBin" @read="updateMail" v-if="!isNewMail" :mails="mailsToShow"/>
 
@@ -25,7 +27,8 @@ export default {
             filterBy: null,
             isNewMail: false,
             sideBar: null,
-            filteredMails: null
+            taggedMails: null,
+            counterMail: 0
 
         }
     },
@@ -38,20 +41,18 @@ export default {
             mailsService.query()
                 .then(mails => {
                     this.mails = mails
-                    return this.mails
-                        // var filterMail = this.mails.filter(mail => {
-                        //     return !mail.isRemoved
-                        // })
-                        // this.filteredMails = filterMail
-                        // return filterMail
-
+                    var inboxMails = this.mails.filter(mail => {
+                        return !mail.isRemoved
+                    })
+                    this.taggedMails = inboxMails
+                    var countUnreadMails = this.taggedMails.filter(mail => {
+                        return !mail.isRead
+                    })
+                    this.counterMail = countUnreadMails.length
                 });
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
-        },
-        setSideBar(filter) {
-            this.sideBar = filter;
         },
         open() {
             this.isNewMail = !this.isNewMail
@@ -103,7 +104,7 @@ export default {
                     console.log(mail);
                     this.loadMails()
                     const msg = {
-                        txt: 'you mail move to recycle bin',
+                        txt: 'you mail stared',
                         type: 'success'
                     };
                     eventBus.$emit('showMsg', msg);
@@ -123,6 +124,53 @@ export default {
                     this.loadMails()
                 })
 
+        },
+        search(filter) {
+            this.sideBar = filter;
+
+
+            if (this.sideBar === 'inbox') {
+                this.taggedMails = this.mails.filter(mail => {
+                    return !mail.isRemoved
+                })
+            } else if (this.sideBar === 'stared') {
+                this.taggedMails = this.mails.filter(mail => {
+                    return mail.isStared
+                })
+            } else if (this.sideBar === 'trash') {
+                this.taggedMails = this.mails.filter(mail => {
+                    return mail.isRemoved
+                })
+            } else if (this.sideBar === 'sent') {
+                this.taggedMails = this.mails.filter(mail => {
+                    return mail.isSent
+                })
+            }
+
+
+        },
+        sorting(sortingBy) {
+            if (sortingBy === 'date') {
+                console.log('hi');
+                this.taggedMails.sort(function(a, b) {
+                    return b.date - a.date
+                })
+            }
+            if (sortingBy === 'subject') {
+                this.taggedMails.sort(function(a, b) {
+                    var subjectA = a.subject.toUpperCase();
+                    var subjectB = b.subject.toUpperCase();
+                    if (subjectA < subjectB) {
+                        return -1;
+                    }
+                    if (subjectA > subjectB) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                });
+            }
+
         }
 
 
@@ -130,50 +178,31 @@ export default {
     computed: {
 
         mailsToShow() {
-            if (!this.filterBy) return this.mails;
-            if (this.filterBy.isRead === 'all') return this.mails;
+            var sideBar = this.sideBar
+
+            // var taggedMails = search()
+            // console.log('taggedMails', taggedMails);
+            if (!this.filterBy) return this.taggedMails;
 
             const searchStr = this.filterBy.subject.toLowerCase();
             var read = this.filterBy.isRead
 
 
-            const filterMail = this.mails.filter(mail => {
-                // console.log(mail.subject.toLowerCase());
+            const filterMail = this.taggedMails.filter(mail => {
                 return mail.subject.toLowerCase().includes(searchStr)
-                    // && mail.isRead.toString() === read
+
             })
 
-
-            const nofar = filterMail.filter(mail => {
-                // console.log(typeof(mail.isRead.toString()));
-                console.log(read);
+            if (!read) read = 'all'
+            const filterByRead = filterMail.filter(mail => {
+                if (read === 'all') return mail
                 return mail.isRead.toString() === read
             })
 
 
-            return nofar;
+            return filterByRead;
         },
-        search() {
 
-            if (this.sideBar === 'inbox') {
-                var filterMail = this.mails.filter(mail => {
-                    return !mail.isRemoved
-                })
-            } else if (this.sideBar === 'stared') {
-                var filterMail = this.mails.filter(mail => {
-                    return !mail.isRemoved
-                })
-            } else if (this.sideBar === 'trash') {
-                var filterMail = this.mails.filter(mail => {
-                    return mail.isRemoved
-                })
-            }
-
-            this.filteredMails = filterMail
-            this.search()
-
-            return filterMail
-        }
 
 
     },
@@ -181,6 +210,7 @@ export default {
         mailList,
         mailFilter,
         mailSideBar,
-        newMail
+        newMail,
+        mailSort
     }
 };

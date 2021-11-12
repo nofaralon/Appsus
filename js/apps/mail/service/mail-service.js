@@ -63,31 +63,38 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
+                date: Date.now(),
                 sentAt: new Date().toString().slice(4, 10),
                 to: 'nofar@momo.com',
                 isRemoved: false,
-                isStared: false
+                isStared: false,
+                isSent: false
             },
             {
                 id: 'e102',
                 subject: 'How are you?',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
+                date: Date.now(),
                 sentAt: new Date().toString().slice(4, 10),
                 to: 'yahav@momo.com',
                 isRemoved: false,
-                isStared: false
+                isStared: false,
+                isSent: false
+
 
             },
             {
                 id: 'e103',
-                subject: 'Miss you!',
+                subject: 'Miss you!123',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
+                date: Date.now(),
                 sentAt: new Date().toString().slice(4, 10),
                 to: 'sharon@momo.com',
                 isRemoved: false,
-                isStared: false
+                isStared: false,
+                isSent: false
 
             },
             {
@@ -95,10 +102,12 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
+                date: Date.now(),
                 sentAt: new Date().toString().slice(4, 10),
                 to: 'mimi@momo.com',
                 isRemoved: false,
-                isStared: false
+                isStared: false,
+                isSent: false
 
             },
 
