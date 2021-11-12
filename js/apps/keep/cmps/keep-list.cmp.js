@@ -4,7 +4,7 @@ export default {
     template:`
     <section class="keep-list">                           
     <div class="keeps">
-        <ul>
+        <ul class="main-layout keeps-grid">
             <li v-for="keep in keeps" :key="keep.id" class="keep-preview-container">
                 <keep-preview :keep="keep" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
             </li>

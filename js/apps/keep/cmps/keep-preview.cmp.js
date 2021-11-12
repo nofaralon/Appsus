@@ -8,7 +8,7 @@ export default {
     props: ['keep'],
     template:`
     <section v-if="cmpType" :style="style">
-    <button @click="removeKeep">X</button>
+    <button class="remove-btn" @click="removeKeep">X</button>
         <component :is="cmpType" :keep="keep" :style="style"></component>
         <div class="funcs-container">
             <input class="color-changer" type="color" v-model=style.backgroundColor>

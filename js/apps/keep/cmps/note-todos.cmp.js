@@ -2,8 +2,8 @@ import todoItem from "./todo-item.cmp.js"
 export default{
     props:['keep'],
     template:`
-   <div>
-       <label @click="editTxt">
+   <div class="todos-lists">
+       <label class="todos-label" @click="editTxt">
            {{label}}
         </label>
            <form @submit.prevent="editTxt">
@@ -14,11 +14,11 @@ export default{
                     <input type="checkbox" @change="completedTask(todo)" :checked="todo.doneAt"> 
                     <span :class="{done : todo.doneAt}" @click="editTxt">{{todo.txt}} </span>
                     <form @submit.prevent="editTxt">
-                        <input v-show="isEdit" v-model="todo.txt">
+                        <input  v-show="isEdit" v-model="todo.txt">
                     </form>
                     <!-- <todo-item :txt="todo.txt"/> -->
                 </li>
-                <input @change="addTodo" type="text" v-model="todo.txt" placeholder="Forgot something?">
+                <input class="added-todo-input" @change="addTodo" type="text" v-model="todo.txt" placeholder="Forgot something?">
             </ul>
    </div>
    `,
