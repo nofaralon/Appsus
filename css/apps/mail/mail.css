@@ -1,4 +1,4 @@
-svg {
+.svg-inline--fa {
     cursor: pointer;
 }
 
@@ -39,7 +39,7 @@ svg {
     font-weight: 700;
 }
 
-.stared {
+.starred {
     fill: chocolate;
 }
 
@@ -104,8 +104,9 @@ svg {
 }
 
 .mail-side-bar-btn {
-    display: inline-block;
+    display: inline-flex;
     padding: 10px;
+    border: 1px solid black
 }
 
 

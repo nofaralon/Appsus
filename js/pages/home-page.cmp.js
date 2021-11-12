@@ -1,6 +1,6 @@
 export default {
     template: `
-        <section class="home-page">
+        <section class="home-page main-layout">
             <h3>Welcome</h3>
             <div  @click="openMail">Mail</div>
             <div  @click="openKeep">Keep</div>

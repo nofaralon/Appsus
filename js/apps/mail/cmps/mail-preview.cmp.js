@@ -3,7 +3,7 @@ export default {
     template: `
     <section  class="mail-preview">
         <div class="mail-preview-container" :class="counterStyle" @click="openModal(mail.id)">
-            <div @click.stop="staredMail(mail.id)"><svg :class="counterStyle" aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg></div>
+            <div @click.stop="staredMail(mail.id)"><svg  aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path :class="star" fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg></div>
             <div>{{mail.to}}</div>
             <div>{{mail.subject}} - {{txt(20)}}</div>
             <div>{{mail.sentAt}}</div>
@@ -28,7 +28,9 @@ export default {
     `,
     data() {
         return {
-            isOpen: false
+            isOpen: false,
+            activeColor: false,
+            color: 'black'
 
         }
     },
@@ -42,6 +44,7 @@ export default {
         },
         txt(limit) {
             const txt = this.mail.body
+            if (!txt.length) return
             if (txt.length > limit) return txt.substr(0, limit) + '...'
             return txt
         },
@@ -49,14 +52,24 @@ export default {
             this.$emit('removeMail', mailId)
         },
         staredMail(mailId) {
+            this.activeColor = !this.activeColor
+            if (this.activeColor) {
+                this.color = 'gold'
+            } else {
+                this.color = 'black'
+
+            }
             this.$emit('staredMail', mailId)
         }
     },
     computed: {
         counterStyle() {
-            return { bold: !this.mail.isRead, stared: this.mail.isStared }
+            return { bold: !this.mail.isRead }
 
         },
+        star() {
+            return { starred: this.mail.isStared }
+        }
 
 
     },

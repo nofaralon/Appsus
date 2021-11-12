@@ -1,6 +1,6 @@
 export default {
     template: `
-        <header class="app-header">
+        <header class="app-header main-layout">
             <h3>Appsus</h3>
             <div>
                 <nav>

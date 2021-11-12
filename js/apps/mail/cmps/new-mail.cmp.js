@@ -4,7 +4,7 @@ export default {
         <form @submit="saveNewMail">
             <h3>New Massage</h3>
             <label >To: 
-                <input v-model="newMail.to" type="mail" >
+                <input  type="mail" >
             </label>
             <label >Subject: 
                 <input v-model="newMail.subject" type="text" >
@@ -26,9 +26,11 @@ export default {
                 subject: null,
                 body: null,
                 isRead: false,
+                date: Date.now(),
                 sentAt: new Date().toString().slice(4, 10),
-                to: null,
-                isRemoved: false
+                to: 'You',
+                isRemoved: false,
+                isSent: true
             }
         }
     },
@@ -40,7 +42,6 @@ export default {
             this.$emit('addNewMail', {...this.newMail });
             // this.$router.push('/mail')
             this.newMail = {
-                to: null,
                 subject: null,
                 body: null
             }
