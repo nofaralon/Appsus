@@ -2,6 +2,10 @@
 @import "/css/apps/mail/mail.css";
 @import "/css/apps/book/book.css";
 @import "/css/helper.css";
+* {
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
 }
@@ -20,9 +24,12 @@ p {
 /* header */
 
 .app-header {
+    background-color: rgb(145, 147, 148);
+}
+
+.haeder-container {
     font-size: 18px;
     padding: 10px;
-    background-color: rgb(145, 147, 148);
     display: flex;
     justify-content: space-between;
     color: aliceblue;

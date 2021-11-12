@@ -5,6 +5,7 @@ import mailSideBar from '../apps/mail/cmps/mail-side-bar.cmp.js'
 import newMail from '../apps/mail/cmps/new-mail.cmp.js'
 import { eventBus } from '../service/event-bus-service.js';
 import mailSort from '../apps/mail/cmps/mail-sort.cmp.js'
+import addMail from '../apps/mail/cmps/add-mail.cmp.js'
 
 
 
@@ -13,8 +14,9 @@ export default {
     <section class="mail-app main-layout">
         <mail-filter  @filtered="setFilter" />
         <mail-sort @sort="sorting"></mail-sort>
+        <add-mail @new="open"></add-mail>
         <div class="mail-app-container">
-            <mail-side-bar :counter="counterMail"  @sideBar="search" @new="open"></mail-side-bar>
+            <mail-side-bar :counter="counterMail"  @sideBar="search" ></mail-side-bar>
             <new-mail v-if="isNewMail" @addNewMail="addMail"></new-mail>
             <mail-list @staredMail="setMailStared" @removeMail="moveToRecycleBin" @read="updateMail" v-if="!isNewMail" :mails="mailsToShow"/>
 
@@ -211,6 +213,7 @@ export default {
         mailFilter,
         mailSideBar,
         newMail,
-        mailSort
+        mailSort,
+        addMail
     }
 };

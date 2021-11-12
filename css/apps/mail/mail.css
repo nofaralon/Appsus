@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .svg-inline--fa {
     cursor: pointer;
 }
@@ -12,7 +16,7 @@
 .mail-app-container {
     display: flex;
     flex-direction: row;
-    height: 83vh;
+    height: 80vh;
     padding-top: 20px;
 }
 
@@ -21,8 +25,13 @@
 
 .mail-list {
     flex-grow: 1;
-    padding-top: 70px;
     max-width: 800px;
+    padding-inline-start: 20px;
+}
+
+.mail-list-container {
+    width: 80%;
+    margin: auto;
 }
 
 
@@ -30,9 +39,11 @@
 
 .mail-preview-container {
     display: flex;
-    border: 1px solid black;
     justify-content: space-between;
-    height: 40px;
+}
+
+.mail-preview-container>* {
+    border: solid;
 }
 
 .bold {
@@ -43,9 +54,14 @@
     fill: chocolate;
 }
 
-.open-mail {
-    display: flex;
-    justify-content: space-between;
+.mail-to {
+    width: 30%;
+    flex-grow: 1;
+}
+
+.mail-subject {
+    width: 40%;
+    flex-grow: 1;
 }
 
 
