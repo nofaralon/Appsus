@@ -16,7 +16,7 @@ export default {
     <form v-if="isText" @submit.prevent="addKeep">
         <input class="add-input upper" type="text" placeholder="Add a note" v-model="keep.info.txt">
         <br>
-    <button class="add-btn">Add</button>
+    <button class="add-keep-btn">Add</button>
 </form>        
 
     <form v-if="isImg" @submit.prevent="addKeep">
@@ -24,14 +24,14 @@ export default {
     <br>
     <input class="add-input" type="text" placeholder="image url" v-model="keep.info.url">
     <br>
-    <button class="add-btn">Add</button>        
+    <button class="add-keep-btn">Add</button>        
     </form> 
         <form v-if="isVideo" @submit.prevent="addKeep">
             <input class="add-input upper" type="text" placeholder="title" v-model="keep.info.title">
             <br>
             <input class="add-input" type="text" placeholder="video url" v-model="keep.info.url"> 
             <br>
-            <button class="add-btn">Add</button>                        
+            <button class="add-keep-btn">Add</button>                        
         </form> 
         <form v-if="isTodos" @submit.prevent="addKeep">
             <input class="add-input upper" type="text" placeholder="label" v-model="keep.info.label">
@@ -39,7 +39,7 @@ export default {
             <!-- <input type='text' v-model="keep.info.todos" placeholder="Enter comma separated list"> -->
             <textarea class="add-input" v-model="keep.info.todos" placeholder="Enter comma separated list"></textarea>
             <br>
-            <button class="add-btn">Add</button>                        
+            <button class="add-keep-btn">Add</button>                        
         </form> 
 </div>
 

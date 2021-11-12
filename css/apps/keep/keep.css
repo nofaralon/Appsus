@@ -16,6 +16,17 @@
     text-align: center;
 }
 
+.keeps-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* grid-auto-rows: min-content; */
+    grid-template-rows: repeat(auto-fill, minmax(100px, min-content));
+        
+    /* grid-auto-rows: min-content; */
+    gap: 10px;
+    grid-auto-flow: dense;
+ }
+
 .add-keep{
     /* position: absolute; */
     top: 15px;
@@ -24,12 +35,18 @@
     width: 395px;
 }
 
+.added-todo-input{
+    max-width: 140px;
+}
+
 .upper{
     height: 25px;
 }
 
-.add-btn{
-    margin: 5px;
+
+/* inside the notes and the notes themselves */
+.add-keep-btn{
+    margin: 15px;
 }
 
 .funcs-container{
@@ -47,51 +64,87 @@
 
 .note-img {
 text-align: center;
+grid-row-end: span 2 ;
+}
+
+.note-video {
+    grid-row-end: span 2 ;
+}
+
+.youtube-player{
+    width: 100%;
+    padding: 0 5px;
+    border: none;
+}
+
+.note-txt {
+    grid-row-end: span 1 ;
+}
+
+.note-todo{
+    grid-row-end: span 2 ;
 }
 
 .note-img img {
-    height: 150px;
-    width: 150px;
-    padding: 5px;
+    width: 100%;
+    padding: 0 5px;
 }
-.note-img h3{
+.note h3{
     margin: 1px;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
-.note-video h3{
-    margin: 1px;
+.note h3:hover{
+    cursor: pointer;
 }
-
-.keep-preview-container {
-    list-style: none;
-    border: solid 1px black;
-}
-
-.keep-preview-container >*{
-    height: 100%;
-}
-
 
 .note>p {
     margin: 1px;
+    margin-inline-start: 5px;
+}
+.todos-lists{
+    margin-inline-start: 5px;
+}
+
+
+.keep-preview-container {
+    list-style: none;
+    height: fit-content;
+}
+.keep-preview-container>section{
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+
+.funcs-container>*:hover{
+    cursor: pointer;
+}
+
+
+.note>p:hover{
+    cursor: pointer;
+}
+
+.todos-label:hover{
+    cursor: pointer;
 }
 
 .todos{
     list-style: none;
 }
 
-.keeps ul{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(100px,200px));
-   grid-template-rows: repeat(auto-fit);
-   gap:15px;
+.todos:hover{
+    cursor: pointer;
 }
 
-
+/* pinned color */
 .ylw{
     color:rgb(252, 252, 10);
 }
 
+/* crossing a done todo */
 .done{
     text-decoration: line-through;
 }
