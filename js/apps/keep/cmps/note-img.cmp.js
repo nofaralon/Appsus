@@ -20,7 +20,7 @@ export default{
         }
     },
     created(){
-        this.style=this.keep.style || {backgroundColor:"grey"}      
+        this.style=this.keep.style     
         this.info={
             title:this.keep.info.title,
             url: this.keep.info.url

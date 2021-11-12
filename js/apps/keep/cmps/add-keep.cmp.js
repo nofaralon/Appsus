@@ -67,30 +67,37 @@ export default {
           this.keep.type = "note-txt";
       }else if(this.isTodos){
           this.keep.type = "note-todos";
+          console.log(this.keep.info.todos.indexOf(',')!==-1);
           if(this.keep.info.todos.indexOf(',')!==-1){
             this.keep.info.todos=this.keep.info.todos.split(',')
-          }else{
-            this.keep.info.todos=this.keep.info.todos.split("")
-          }
             this.keep.info.todos=this.keep.info.todos.map(todo=>{
                 var txt={
-                   txt:todo
+                   txt:todo,
+                   doneAt:null
                }
                return txt
            })
+          }else{
+            console.log(this.keep.info.todos);
+            const str=this.keep.info.todos
+            this.keep.info.todos={
+              txt:str,
+              doneAt:null
+            }
+          }
             // this.keep.info.todos.txt=str
       }else if(this.isImg){
         this.keep.type = "note-img";
     }else{
         this.keep.type = "note-vid";
     }
-      keepService.addKeep(this.keep);
       // const msg = {
       //     txt: 'keep added.',
       //     type: 'success',
       // };
       // eventBus.$emit('showMsg', msg)
-      this.$emit("added");
+      console.log(this.keep);
+      this.$emit('added',this.keep);
       this.clear();
     },
     on() {

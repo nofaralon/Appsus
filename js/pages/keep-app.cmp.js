@@ -8,8 +8,8 @@ export default {
   template: `
     <div>
         <keep-filter @filtered="setFilter"/>
-        <add-keep @added="loadKeeps"/>
-        <keep-list :keeps="keepsToShow" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
+        <add-keep @added="addKeep"/>
+        <keep-list :keeps="keepsToShow" @added="addKeep" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
     </div>
     `,
   data() {
@@ -23,6 +23,15 @@ export default {
     this.loadKeeps();
   },
   methods: {
+    addKeep(keep){
+      keepService.addKeep(keep)
+      .then((msg)=>{
+        this.loadKeeps()
+        console.log(msg);
+        eventBus.$emit('showMsg', msg);
+      })
+
+    },
     loadKeeps() {
       keepService.query().then((keeps) => {
         this.keeps = keeps;
@@ -32,6 +41,7 @@ export default {
     pinKeep(id){
         keepService.pinKeep(id)
         .then(()=>{this.loadKeeps()
+          keepService.saveAfterUserInput()
           const msg = {
             txt: 'Added the pin',
             type: 'success'
@@ -42,6 +52,7 @@ export default {
     removePin(id){
         keepService.pinRemove(id)
         .then(()=>{this.loadKeeps()
+          keepService.saveAfterUserInput()
           const msg = {
             txt: 'Pin removed',
             type: 'success'
@@ -52,6 +63,7 @@ export default {
     duplicatePin(id){
         keepService.duplicate(id)
         .then(()=>{this.loadKeeps()
+          keepService.saveAfterUserInput()
           const msg = {
             txt: 'Keep duplicated',
             type: 'success'
@@ -65,6 +77,7 @@ export default {
     removeKeep(id){
         keepService.removeKeep(id)
         .then(()=>{this.loadKeeps()
+          keepService.saveAfterUserInput()
           console.log('hi');
           const msg = {
             txt: 'Keep removed',

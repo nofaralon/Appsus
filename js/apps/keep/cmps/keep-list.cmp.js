@@ -1,4 +1,3 @@
-import { keepService } from "../service/keep-service.js"
 import keepPreview from "./keep-preview.cmp.js"
 export default {
     props:['keeps'],
@@ -15,6 +14,10 @@ export default {
     </section>
     `,
     methods:{
+        addKeep(keep){
+            console.log(keep);
+            this.$emit('added',keep)
+        },
         removeKeep(id){
             this.$emit('remove',id)
         },

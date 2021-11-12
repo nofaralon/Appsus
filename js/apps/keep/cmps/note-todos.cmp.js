@@ -6,26 +6,30 @@ export default{
        <label @click="editTxt">
            {{label}}
         </label>
-        <form @submit.prevent="editTxt">
-                        <input v-show="isEdit" v-model="label">
-                    </form>
-           <ul>
+           <form @submit.prevent="editTxt">
+               <input v-show="isEdit" v-model="label">
+            </form>
+            <ul>
                 <li v-for="todo in todos" class="todos" :key="todo.id">
-                  <input type="checkbox" @change="completedTask(todo)" :checked="todo.doneAt"> 
+                    <input type="checkbox" @change="completedTask(todo)" :checked="todo.doneAt"> 
                     <span :class="{done : todo.doneAt}" @click="editTxt">{{todo.txt}} </span>
                     <form @submit.prevent="editTxt">
                         <input v-show="isEdit" v-model="todo.txt">
                     </form>
                     <!-- <todo-item :txt="todo.txt"/> -->
                 </li>
-           </ul>
-
+                <input @change="addTodo" type="text" v-model="todo.txt" placeholder="Forgot something?">
+            </ul>
    </div>
    `,
     data(){
         return{
             label:null,
             todos:null,
+            todo:{
+                txt:'',
+                doneAt:null
+            },
             style:null,
             isEdit:false,
         }
@@ -40,15 +44,18 @@ export default{
         this.isEdit=!this.isEdit;
     },
     completedTask: function(todo){
+        console.log(todo.doneAt);
         todo.doneAt=!todo.doneAt
+    },
+    addTodo(){
+        console.log(this.todo);
+        this.keep.info.todos.push(JSON.parse(JSON.stringify(this.todo)))
+        this.todo={
+            txt:'',
+            doneAt:null
+        }
     }
     
-},
-computed:{
-    doneAt(todo){
-        console.log(todo);
-        
-    }
 },
 components:{
     todoItem,

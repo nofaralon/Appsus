@@ -93,7 +93,6 @@ function duplicate(entityType, entityId) {
                 }
 
             }
-            // console.log(newEntities);
             _save(entityType, newEntities)
             return newEntities
         })

@@ -10,6 +10,7 @@ export const keepService = {
   pinKeep,
   pinRemove,
   duplicate,
+  saveAfterUserInput,
 };
 
 const KEEP_KEY = "keepsDB";
@@ -59,6 +60,10 @@ _save();
 function addKeep(keepToAdd) {
   gKeeps.push(keepToAdd);
   _save();
+  return Promise.resolve({
+    txt: 'Added the pin',
+    type: 'success'
+})
 }
 
 function duplicate(id){
@@ -94,4 +99,8 @@ function keepById(id) {
 }
 function _save() {
   utilService.saveToStorage(KEEP_KEY, gKeeps);
+}
+
+function saveAfterUserInput(){
+  gKeeps = utilService.loadFromStorage(KEEP_KEY)
 }
