@@ -10,6 +10,25 @@
     background-color: rgb(243, 187, 2);
     height: 30px;
     width: 150px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    padding: 5px;
+    height: 30px;
+}
+
+.add-book-btn:hover {
+    background-color: rgba(243, 187, 2, 0.603);
+    cursor: pointer;
+}
+
+
+/* book-filter */
+
+.book-filter input {
+    border: none;
+    background-color: rgba(243, 187, 2, 0.658);
 }
 
 
@@ -146,4 +165,47 @@ th {
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 12px -5px 8px 2px #cbd3e973;
+}
+
+
+/* add-book */
+
+.book-add {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.book-add h3 {
+    padding-bottom: 20px;
+}
+
+.book-add input {
+    background-color: rgba(243, 187, 2, 0.637);
+    border: none;
+    height: 30px;
+}
+
+.book-add button {
+    background-color: rgba(253, 229, 150, 0.637);
+    border: none;
+    height: 30px;
+}
+
+.book-add button:hover {
+    background-color: rgba(250, 238, 200, 0.637);
+}
+
+.google-list {
+    text-align: start;
+}
+
+.google-preview {
+    display: flex;
+}
+
+.google-preview button {
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    height: 20px;
 }

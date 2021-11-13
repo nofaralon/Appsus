@@ -5,8 +5,8 @@ import bookFilter from '../apps/book/cmps/book-filter.cmp.js';
 
 export default {
     template: `
-    <section class="book-app">
-        <div @click="addBook"> add Book</div>
+    <section class="book-app main-layout">
+        <div class="add-book-btn" @click="addBook"> Add new book</div>
         <book-filter  @filtered="setFilter" />
         <books-list  :books="booksToShow"/>
     </section>

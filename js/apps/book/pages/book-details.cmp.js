@@ -4,7 +4,7 @@ import { eventBus } from '../../../service/event-bus-service.js';
 
 export default {
     template: `
-        <section v-if="book" class="book-details">
+        <section v-if="book" class=" main-layout book-details">
         <div class="link-container">
                         <router-link :to="nextBook">Next book</router-link>    
                         <router-link :to="previousBook">Previous book</router-link>    

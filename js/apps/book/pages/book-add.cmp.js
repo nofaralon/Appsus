@@ -5,11 +5,11 @@ import { eventBus } from '../../../service/event-bus-service.js';
 
 export default {
     template: `
-        <div class="book-add main-height">
+        <div class="  main-layout book-add main-height">
         
         <form @submit.prevent= "search">
             <h3>Search for a new book</h3>
-            <label>Search: 
+            <label> 
                 <input v-model.lazy="searchVal" type="search" placeholder="Search...">
             </label>
             <button>search</button>
