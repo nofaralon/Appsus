@@ -17,7 +17,7 @@ export default{
                     </form>
                     <!-- <todo-item :txt="todo.txt"/> -->
                 </li>
-                <input class="added-todo-input" @change="addTodo" type="text" v-model="todo.txt" placeholder="Forgot something?">
+                <input v-if="keep.info.todos.length<6" class="added-todo-input" @change="addTodo" type="text" v-model="todo.txt" placeholder="Forgot something?">
             </ul>
    </div>
    `,

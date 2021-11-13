@@ -19,8 +19,8 @@
 .keeps-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fill, 36px);
-    gap: 5px;
+    grid-template-rows: repeat(auto-fill, 80px);
+    gap: 2px;
     grid-auto-flow: dense;
     /* display: flex;
     flex-wrap: wrap;
@@ -29,16 +29,16 @@
  }
 
  .keep-img{
-     grid-row: span 4;
+     grid-row: span 2;
  }
  .keep-vid{
-    grid-row: span 4;
+    grid-row: span 2;
 }
 .keep-todos{
-    grid-row: span 3;
+    grid-row: span 2;
 }
 .keep-txt{
-    grid-row: span 2;
+    grid-row: span 1;
 }
 
 
@@ -48,6 +48,11 @@
     /* position: absolute; */
     top: 15px;
 }
+
+.add-keep>*:hover{
+cursor: pointer;
+}
+
 .add-input{
     width: 395px;
 }
@@ -93,20 +98,17 @@ text-align: center;
 }
 
 .youtube-player{
-    width: 100%;
     padding: 0 5px;
     border: none;
-}
-
-.note-txt {
-}
-
-.note-todo{
+    max-height: 100px;
+    object-fit: cover;
+    width: 100%;
 }
 
 .note-img img {
-    width: 100%;
     padding: 0 5px;
+    max-height: 100px;
+    object-fit: cover;
 }
 .note h3{
     margin: 1px;
@@ -160,7 +162,7 @@ text-align: center;
 
 /* pinned color */
 .ylw{
-    color:rgb(252, 252, 10);
+    fill:rgb(252, 252, 10);
 }
 
 /* crossing a done todo */

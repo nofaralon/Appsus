@@ -44,7 +44,7 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
     type: "note-todos",
     label:"Work",
     info: {
-      label: "Get my stuff together",
+      headline: "Get my stuff together",
       todos: [
         { txt: "Driving liscence", doneAt: null },
         { txt: "Coding power", doneAt: 187111111 },
@@ -74,7 +74,7 @@ function addKeep(keepToAdd) {
   gKeeps.push(keepToAdd);
   _save();
   return Promise.resolve({
-    txt: 'Added the pin',
+    txt: 'Keep added',
     type: 'success'
 })
 }

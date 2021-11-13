@@ -26,8 +26,7 @@ export default{
     },
     methods:{
         editTxt(){
-            this.$emit('save',this.keep)
-            console.log(this.keep);
+            this.$emit('save')
             this.isEdit=!this.isEdit;
         },
         

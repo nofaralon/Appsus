@@ -85,7 +85,6 @@ export default {
   },
   methods: {
     addKeep() {
-      console.log(this.keep);
       this.keep.id = utilService.makeId();
       this.keep.label = this.label;
       if (this.isText) {
@@ -109,17 +108,11 @@ export default {
             doneAt: null,
           });
         }
-        // this.keep.info.todos.txt=str
       } else if (this.isImg) {
         this.keep.type = "note-img";
       } else {
         this.keep.type = "note-vid";
       }
-      // const msg = {
-      //     txt: 'keep added.',
-      //     type: 'success',
-      // };
-      // eventBus.$emit('showMsg', msg)
       this.$emit("added", this.keep);
       this.clear();
     },
