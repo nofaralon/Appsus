@@ -1,10 +1,11 @@
 export default {
     template: `
-        <section class="home-page main-layout">
-            <h3>Welcome</h3>
+        <section class="home-page main-layout main-height">
+            <div class="background" ><img src="../../images/background.png" ></div>
+            <!-- <h3>Welcome</h3>
             <div  @click="openMail">Mail</div>
             <div  @click="openKeep">Keep</div>
-            <div  @click="openBook">Book</div>
+            <div  @click="openBook">Book</div> -->
         </section>
     `,
     methods: {

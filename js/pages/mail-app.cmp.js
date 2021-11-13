@@ -11,13 +11,17 @@ import addMail from '../apps/mail/cmps/add-mail.cmp.js'
 
 export default {
     template: `
-    <section class="mail-app main-layout">
-        <mail-filter  @filtered="setFilter" />
-        <mail-sort @sort="sorting"></mail-sort>
-        <add-mail @new="open"></add-mail>
+    <section class="mail-app main-layout main-height">
+        <div class="filters-container">
+            <add-mail @new="open"></add-mail>
+            <div class="filters">
+                <mail-filter  @filtered="setFilter" />
+                <mail-sort @sort="sorting"></mail-sort>
+            </div>
+        </div>
         <div class="mail-app-container">
             <mail-side-bar :counter="counterMail"  @sideBar="search" ></mail-side-bar>
-            <new-mail v-if="isNewMail" @addNewMail="addMail"></new-mail>
+            <new-mail v-if="isNewMail" @deletDraft="open" @addNewMail="addMail"></new-mail>
             <mail-list @staredMail="setMailStared" @removeMail="moveToRecycleBin" @read="updateMail" v-if="!isNewMail" :mails="mailsToShow"/>
 
         </div>
@@ -36,6 +40,7 @@ export default {
     },
     created() {
         this.loadMails();
+        eventBus.$on('deletedMail', this.loadMails());
 
     },
     methods: {
@@ -51,6 +56,7 @@ export default {
                         return !mail.isRead
                     })
                     this.counterMail = countUnreadMails.length
+                    if (!countUnreadMails.length) this.counterMail = ' '
                 });
         },
         setFilter(filterBy) {
@@ -103,8 +109,8 @@ export default {
         setMailStared(mailId) {
             mailsService.setMailStared(mailId)
                 .then((mail) => {
-                    console.log(mail);
                     this.loadMails()
+                    if (!mail.isStared) return
                     const msg = {
                         txt: 'you mail stared',
                         type: 'success'
@@ -128,6 +134,7 @@ export default {
 
         },
         search(filter) {
+            if (this.isNewMail) this.isNewMail = !this.isNewMail
             this.sideBar = filter;
 
 
