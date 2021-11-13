@@ -44,7 +44,7 @@ p {
 .home-container {
     display: flex;
     justify-content: space-around;
-    width: 60%;
+    max-width: 500px;
     margin: auto;
     padding-top: 100px;
 }
@@ -157,4 +157,14 @@ p {
 
 .main-height {
     height: 89vh;
+}
+
+
+/* MEDIUM */
+
+@media (max-width: 840px) {
+    .home-container {
+        gap: 10px;
+        justify-content: space-between;
+    }
 }

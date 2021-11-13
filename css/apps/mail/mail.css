@@ -22,6 +22,8 @@ path {
     flex-grow: 1;
     max-width: 900px;
     padding-inline-start: 20px;
+    font-size: 16px;
+    padding-top: 15px
 }
 
 .mail-list-container {
@@ -306,12 +308,23 @@ path {
 
 /* LARGE */
 
-@media (max-width: 1110px) {}
+@media (max-width: 1110px) {
+    .mail-list {
+        font-size: 16px
+    }
+}
 
 
 /* MEDIUM */
 
-@media (max-width: 840px) {}
+@media (max-width: 840px) {
+    .mail-list {
+        font-size: 11px
+    }
+    .filters-container {
+        flex-direction: column;
+    }
+}
 
 
 /* SMALL */
@@ -322,6 +335,7 @@ path {
         z-index: 1;
         background-color: rgba(228, 228, 228, 0.897);
         top: -11px;
+        left: 11px;
         display: flex;
         flex-direction: column;
     }
@@ -332,12 +346,14 @@ path {
         position: absolute;
         z-index: 2;
         top: -34px;
+        left: 11px;
     }
     .mail-side-bar {
         width: 0px;
     }
     .mail-list {
         padding-inline-start: 0px;
+        font-size: 11px
     }
     .add-mail-btn img {
         object-fit: cover;
