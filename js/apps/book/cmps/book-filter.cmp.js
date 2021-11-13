@@ -19,8 +19,7 @@ export default {
     methods: {
         filter() {
             this.$emit('filtered', {...this.filterBy });
-            //deep copy
-            // this.$emit('filtered', JSON.parse(JSON.stringify(this.filterBy)));
+
         }
     }
 }

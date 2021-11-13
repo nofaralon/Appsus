@@ -1,17 +1,19 @@
 import gPreview from '../cmps/google-preview.cmp.js'
 
 export default {
-    props: ['books'],
+    props: ['searches'],
     template: `
         <ul class="google-list">
-            <li  v-for="book in books" :key="book.id" >
-                <g-preview :book="book" />
+            <li  v-for="search in searches" :key="search.id" >
+                <g-preview  @add="add" :search="search" />
             </li>
             
         </ul>
     `,
     methods: {
-
+        add(search) {
+            this.$emit('add', search)
+        }
     },
     components: {
         gPreview

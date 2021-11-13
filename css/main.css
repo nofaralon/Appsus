@@ -22,8 +22,49 @@ p {
     margin: 0;
 }
 
-.background {
-    height: 800px;
+
+/* home-page */
+
+.home-page {
+    text-align: center;
+}
+
+.home-page h3 {
+    font-size: 50px;
+    padding-top: 50px;
+}
+
+.home-container {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.home-container button {
+    border: none;
+    width: 120px;
+    height: 30px;
+    background-color: rgb(243, 187, 2);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.home-container button:hover {
+    background-color: rgba(243, 187, 2, 0.418);
+    cursor: pointer;
+}
+
+.books {
+    height: 100px;
+    width: 120px;
+}
+
+.books img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 
@@ -55,11 +96,6 @@ p {
 .main-haeder {
     background-color: rgb(243, 187, 2);
 }
-
-
-/* .router-link-exact-active {
-    color: gold
-} */
 
 .app-header a:hover {
     color: rgb(255, 251, 251);
