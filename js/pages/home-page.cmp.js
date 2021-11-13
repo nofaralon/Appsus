@@ -5,15 +5,15 @@ export default {
             <div class="home-container">
                 
                 <div class="books"> 
-                    <img src="../../images/books.svg.png" > 
+                    <img src="./images/books.svg.png" > 
                     <button @click="openBook">Go to Books ➡</button>
                 </div>
                 <div class="books"> 
-                    <img src="../../images/Gmail.svg.png" > 
+                    <img src="./images/Gmail.svg.png" > 
                     <button @click="openMail">Go to Mail ➡</button>
                 </div>
                 <div class="books"> 
-                    <img src="../../images/keeps.svg.png" > 
+                    <img src="./images/keeps.svg.png" > 
                     <button @click="openKeep">Go to Keeps ➡</button>
                 </div>
 
