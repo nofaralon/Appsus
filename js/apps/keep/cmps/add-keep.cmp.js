@@ -1,7 +1,7 @@
 import { keepService } from "../service/keep-service.js";
 import { utilService } from "../../../service/util-service.js";
 export default {
-  template: `
+    template: `
 <div class="add-keep-container">
     <div class="add-keep">
         <form @submit.prevent="addKeep" @click="on">
@@ -16,7 +16,7 @@ export default {
     <form v-if="isText" @submit.prevent="addKeep">
         <input class="add-input upper" type="text" placeholder="Add a note" v-model="keep.info.txt">
         <br>
-        <div class="flex center">
+        <div class="label-container flex center">
       <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
       <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
     </div>
@@ -29,7 +29,7 @@ export default {
     <br>
     <input class="add-input" type="text" placeholder="image url" v-model="keep.info.url">
     <br>
-    <div class="flex center">
+    <div class="label-container flex center">
       <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
       <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
     </div>
@@ -41,7 +41,7 @@ export default {
             <br>
             <input class="add-input" type="text" placeholder="video url" v-model="keep.info.url"> 
             <br>
-            <div class="flex center">
+            <div class="label-container flex center">
       <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
       <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
     </div>
@@ -54,7 +54,7 @@ export default {
             <!-- <input type='text' v-model="keep.info.todos" placeholder="Enter comma separated list"> -->
             <textarea class="add-input" v-model="keep.info.todos" placeholder="Enter comma separated list"></textarea>
             <br>
-            <div class="flex center">
+            <div class="label-container flex center">
       <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
       <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
     </div>
@@ -64,103 +64,103 @@ export default {
 </div>
 
 `,
-  data() {
-    return {
-      isOn: false,
-      isText: true,
-      isTodos: false,
-      isVideo: false,
-      isImg: false,
-      todos: null,
-      label: null,
-      keep: {
-        info: {},
-      isPinned: false,
-      style:{
-        backgroundColor:"#2f599d",
-        fontFamily:'Arial, Helvetica, sans-serif'
-      }
-      },
-    };
-  },
-  methods: {
-    addKeep() {
-      this.keep.id = utilService.makeId();
-      this.keep.label = this.label;
-      if (this.isText) {
-        this.keep.type = "note-txt";
-      } else if (this.isTodos) {
-        this.keep.type = "note-todos";
-        if (this.keep.info.todos.indexOf(",") !== -1) {
-          this.keep.info.todos = this.keep.info.todos.split(",");
-          this.keep.info.todos = this.keep.info.todos.map((todo) => {
-            var txt = {
-              txt: todo,
-              doneAt: null,
-            };
-            return txt;
-          });
-        } else {
-          const str = this.keep.info.todos;
-          this.keep.info.todos = [];
-          this.keep.info.todos.push({
-            txt: str,
-            doneAt: null,
-          });
-        }
-      } else if (this.isImg) {
-        this.keep.type = "note-img";
-      } else {
-        this.keep.type = "note-vid";
-      }
-      this.$emit("added", this.keep);
-      this.clear();
+    data() {
+        return {
+            isOn: false,
+            isText: true,
+            isTodos: false,
+            isVideo: false,
+            isImg: false,
+            todos: null,
+            label: null,
+            keep: {
+                info: {},
+                isPinned: false,
+                style: {
+                    backgroundColor: "#2f599d",
+                    fontFamily: 'Arial, Helvetica, sans-serif'
+                }
+            },
+        };
     },
-    on() {
-      this.isOn = !this.isOn;
-    },
-    setFalse() {
-      this.isText = false;
-      this.isTodos = false;
-      this.isVideo = false;
-      this.isImg = false;
-    },
-    clear() {
-      this.keep = {
-        info: {
-          todos: "",
+    methods: {
+        addKeep() {
+            this.keep.id = utilService.makeId();
+            this.keep.label = this.label;
+            if (this.isText) {
+                this.keep.type = "note-txt";
+            } else if (this.isTodos) {
+                this.keep.type = "note-todos";
+                if (this.keep.info.todos.indexOf(",") !== -1) {
+                    this.keep.info.todos = this.keep.info.todos.split(",");
+                    this.keep.info.todos = this.keep.info.todos.map((todo) => {
+                        var txt = {
+                            txt: todo,
+                            doneAt: null,
+                        };
+                        return txt;
+                    });
+                } else {
+                    const str = this.keep.info.todos;
+                    this.keep.info.todos = [];
+                    this.keep.info.todos.push({
+                        txt: str,
+                        doneAt: null,
+                    });
+                }
+            } else if (this.isImg) {
+                this.keep.type = "note-img";
+            } else {
+                this.keep.type = "note-vid";
+            }
+            this.$emit("added", this.keep);
+            this.clear();
         },
-        isPinned: false,
-      style:{
-        backgroundColor:"#2f599d",
-        fontFamily:'Arial, Helvetica, sans-serif'
-      }
-      };
-    },
+        on() {
+            this.isOn = !this.isOn;
+        },
+        setFalse() {
+            this.isText = false;
+            this.isTodos = false;
+            this.isVideo = false;
+            this.isImg = false;
+        },
+        clear() {
+            this.keep = {
+                info: {
+                    todos: "",
+                },
+                isPinned: false,
+                style: {
+                    backgroundColor: "#2f599d",
+                    fontFamily: 'Arial, Helvetica, sans-serif'
+                }
+            };
+        },
 
-    setTxt() {
-      this.setFalse();
-      this.isText = true;
+        setTxt() {
+            this.setFalse();
+            this.isText = true;
+        },
+        setImg() {
+            this.setFalse();
+            this.isImg = true;
+        },
+        setVideo() {
+            this.setFalse();
+            this.isVideo = true;
+        },
+        setTodos() {
+            this.setFalse();
+            this.isTodos = true;
+        },
+        setLabel(label) {
+            this.label = null;
+            this.label = label;
+        },
     },
-    setImg() {
-      this.setFalse();
-      this.isImg = true;
+    components: {
+        keepService,
+        utilService,
     },
-    setVideo() {
-      this.setFalse();
-      this.isVideo = true;
-    },
-    setTodos() {
-      this.setFalse();
-      this.isTodos = true;
-    },
-    setLabel(label) {
-      this.label = null;
-      this.label = label;
-    },
-  },
-  components: {
-    keepService,
-    utilService,
-  },
 };

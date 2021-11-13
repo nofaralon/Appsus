@@ -70,12 +70,21 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [{
 _save();
 
 function addKeep(keepToAdd) {
+<<<<<<< HEAD
   gKeeps.push(keepToAdd);
   _save();
   return Promise.resolve({
     txt: 'Keep added',
     type: 'success'
 })
+=======
+    gKeeps.push(keepToAdd);
+    _save();
+    return Promise.resolve({
+        txt: 'Keep added',
+        type: 'success'
+    })
+>>>>>>> 8e9d54886253a6e17c4e2a5ef1d4a4f0de76e341
 }
 
 function duplicate(id) {

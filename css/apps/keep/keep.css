@@ -1,12 +1,14 @@
-*{
+* {
     box-sizing: border-box;
 }
-.keep-filter{
+
+.keep-filter {
     display: flex;
     justify-content: center;
     margin-top: 5px;
 }
-.add-keep-container{
+
+.add-keep-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,9 +16,44 @@
     padding: 10px;
     position: relative;
     text-align: center;
+    width: 500px;
+    margin: auto;
+    margin-top: 15px;
+    /* background-color: rgba(243, 187, 2); */
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    box-shadow: 1px -1px 1px 3px lightgrey;
 }
+
+.add-keep-container:hover {
+    box-shadow: 1px -1px 1px 3px rgb(163, 162, 162);
+}
+
+.add-keep-container input {
+    border: none;
+    background-color: rgba(243, 187, 2, 0.623);
+    margin-bottom: 5px;
+}
+
+.add-keep-container textarea {
+    border: none;
+    background-color: rgba(243, 187, 2, 0.623);
+}
+
+.label-container button {
+    border: none;
+    margin-left: 3px;
+}
+
+.label-container button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
 /* keeps grid */
-.keeps-grid{
+
+.keeps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fill, 80px);
@@ -26,55 +63,65 @@
     flex-wrap: wrap;
     
     flex-flow: wrap; */
- }
+}
 
- .keep-img{
-     grid-row: span 2;
- }
- .keep-vid{
+.keep-img {
     grid-row: span 2;
 }
-.keep-todos{
+
+.keep-vid {
     grid-row: span 2;
 }
-.keep-txt{
+
+.keep-todos {
+    grid-row: span 2;
+}
+
+.keep-txt {
     grid-row: span 1;
 }
 
 
-
 /* keep buttons */
-.add-keep{
+
+.add-keep {
     /* position: absolute; */
     top: 15px;
 }
 
-.add-keep>*:hover{
-cursor: pointer;
+.add-keep>*:hover {
+    cursor: pointer;
 }
 
-.add-input{
+.add-input {
     width: 395px;
 }
 
-.added-todo-input{
+.added-todo-input {
     max-width: 140px;
 }
 
-.upper{
+.upper {
     height: 25px;
 }
 
 
 /* inside the notes and the notes themselves */
 
-
-
-.add-keep-btn{
-    margin: 15px;
+.add-keep-btn {
+    border: none;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    background-color: rgba(243, 187, 2, 0.623);
 }
 
-.funcs-container{
+.add-keep-btn:hover {
+    cursor: pointer;
+    background-color: rgba(243, 187, 2, 0.418);
+}
+
+.funcs-container {
     padding: 3px;
     display: flex;
     justify-content: space-around;
@@ -86,15 +133,21 @@ cursor: pointer;
     padding-top: 2px;
 }
 
-.font-changer{
+.font-changer {
     width: 80px;
 }
 
 .note-img {
-text-align: center;
+    text-align: center;
 }
 
+<<<<<<< HEAD
 .youtube-player{
+=======
+.note-video {}
+
+.youtube-player {
+>>>>>>> 8e9d54886253a6e17c4e2a5ef1d4a4f0de76e341
     padding: 0 5px;
     border: none;
     max-height: 100px;
@@ -107,13 +160,14 @@ text-align: center;
     max-height: 100px;
     object-fit: cover;
 }
-.note h3{
+
+.note h3 {
     margin: 1px;
     text-align: center;
     padding-bottom: 5px;
 }
 
-.note h3:hover{
+.note h3:hover {
     cursor: pointer;
 }
 
@@ -121,48 +175,51 @@ text-align: center;
     margin: 1px;
     margin-inline-start: 5px;
 }
-.todos-lists{
+
+.todos-lists {
     margin-inline-start: 5px;
 }
-
 
 .keep-preview-container {
     list-style: none;
     height: fit-content;
 }
-.keep-preview-container>section{
+
+.keep-preview-container>section {
     border: solid 1px black;
     border-radius: 5px;
 }
 
-
-.funcs-container>*:hover{
+.funcs-container>*:hover {
     cursor: pointer;
 }
 
-
-.note>p:hover{
+.note>p:hover {
     cursor: pointer;
 }
 
-.todos-label:hover{
+.todos-label:hover {
     cursor: pointer;
 }
 
-.todos{
+.todos {
     list-style: none;
 }
 
-.todos:hover{
+.todos:hover {
     cursor: pointer;
 }
 
+
 /* pinned color */
-.ylw{
-    fill:rgb(252, 252, 10);
+
+.ylw {
+    fill: rgb(252, 252, 10);
 }
 
+
 /* crossing a done todo */
-.done{
+
+.done {
     text-decoration: line-through;
 }
