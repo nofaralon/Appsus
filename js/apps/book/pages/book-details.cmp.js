@@ -5,6 +5,10 @@ import { eventBus } from '../../../service/event-bus-service.js';
 export default {
     template: `
         <section v-if="book" class="book-details">
+        <div class="link-container">
+                        <router-link :to="nextBook">Next book</router-link>    
+                        <router-link :to="previousBook">Previous book</router-link>    
+        </div>
             <div class="details-container" v-if="!openAddReview">
                 <div>
                 <img class="book-img" :src="book.thumbnail" > 
@@ -167,17 +171,20 @@ export default {
         }
 
     },
+    watch: {
+        "$route.params.bookId": {
+            handler() {
+                const { bookId } = this.$route.params
+                booksService.getById(bookId).then(book => this.book = book);
+                booksService.nextBookById(bookId).then(nextBook => this.nextBook = nextBook)
+                booksService.previousBookById(bookId).then(previousBook => this.previousBook = previousBook)
+            },
+            immediate: true
+        }
+    },
     components: {
         reviewAdd
     }
 
 
 }
-
-
-
-
-// return new Intl.NumberFormat(this.book.language, {
-//     style: 'currency',
-//     currency: this.book.listPrice.currencyCode,
-// }).format(this.book.listPrice.amount);

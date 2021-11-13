@@ -6,7 +6,7 @@ import bookFilter from '../apps/book/cmps/book-filter.cmp.js';
 export default {
     template: `
     <section class="book-app">
-        <!-- <button @click="openAddBook" >Add new book</button>         -->
+        <div @click="addBook"> add Book</div>
         <book-filter  @filtered="setFilter" />
         <books-list  :books="booksToShow"/>
     </section>
@@ -19,6 +19,7 @@ export default {
     },
     created() {
         this.loadBooks();
+        // eventBus.$on('addedBook', this.loadBooks());
 
     },
     methods: {
@@ -31,6 +32,9 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
+        addBook() {
+            this.$router.push('/book/add')
+        }
 
 
     },

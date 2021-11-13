@@ -1,16 +1,19 @@
 export default {
-    props: ['book'],
+    props: ['search'],
     template: `
         <div class="google-preview">
-            <h3 class="book-title"> {{book.volumeInfo.title}}  </h3>
-            
+            <h3 class="book-title"> {{search.volumeInfo.title}}  </h3>
+            <button @click="add">+</button>
+
         </div>
     `,
     created() {
-        console.log(this.book);
+        console.log(this.search);
     },
-    computed: {
-
-
-    },
+    methods: {
+        add() {
+            console.log(this.search);
+            this.$emit('add', this.search)
+        }
+    }
 }
