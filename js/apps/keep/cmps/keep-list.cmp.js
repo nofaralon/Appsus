@@ -3,19 +3,20 @@ export default {
     props:['keeps'],
     template:`
     <section class="keep-list">                           
-    <div class="keeps">
         <ul class="main-layout keeps-grid">
-            <li v-for="keep in keeps" :key="keep.id" class="keep-preview-container">
-                <keep-preview :keep="keep" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
+                
+            <li v-for="keep in keeps" :key="keep.id" :class="{'keep-img': keep.type==='note-img','keep-txt':keep.type==='note-txt','keep-vid':keep.type==='note-vid','keep-todos':keep.type==='note-todos'}" class="keep-preview-container">
+                <keep-preview :keep="keep" @save="saveKeeps" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
             </li>
         </ul>
-    </div>
 
     </section>
     `,
     methods:{
+        saveKeeps(keep){
+            this.$emit('save',keep)
+        },
         addKeep(keep){
-            console.log(keep);
             this.$emit('added',keep)
         },
         removeKeep(id){
@@ -31,6 +32,13 @@ export default {
             this.$emit('duplicate',id)
         }
 
+    },
+    computed:{
+        keepType: function(keep){
+            return{
+                'keep-img': keep.type==="note-img",'keep-txt':keep.type==="note-txt",'keep-vid':keep.type==="note-vid",'keep-todos':keep.type==="note-todos"
+            }
+        } 
     },
 
     components:{

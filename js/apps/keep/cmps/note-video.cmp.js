@@ -1,36 +1,28 @@
 export default{
     props:['keep'],
     template:`
-   <div class="note note-video" :style="style">
-    <h3 @click="editTxt">{{info.title}}</h3>
+   <div class="note note-video">
+    <h3 @click="editTxt">{{keep.info.title}}</h3>
        <div v-show="isEdit" class="text-editor">
             <form @submit.prevent="editTxt">
-                <input v-model="info.title">
+                <input v-model="keep.info.title">
             </form>
        </div>
     
-       <iframe class="youtube-player":src="info.url">
+       <iframe class="youtube-player":src="keep.info.url">
 
        </iframe>
     </div>
    `,
      data(){
         return{
-            info:null,
-            style:null,
             isEdit:false,
-        }
-    },
-    created(){
-        this.style=this.keep.style || null        
-        this.info={
-            title:this.keep.info.title,
-            url:`${this.keep.info.url}`
         }
     },
     methods:{
         editTxt(){
             this.isEdit=!this.isEdit;
+            this.$emit('save')
         }
     },
 }

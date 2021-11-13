@@ -55,6 +55,7 @@ function remove(entityType, entityId) {
             const idx = entities.findIndex(entity => entity.id === entityId);
             entities.splice(idx, 1)
             _save(entityType, entities)
+            return entities
         })
 }
 
@@ -66,6 +67,7 @@ function pin(entityType, entityId) {
             keep[0].isPinned = true;
             entities.unshift(keep[0])
             _save(entityType, entities)
+            return entities
         })
 }
 
@@ -77,6 +79,8 @@ function pinRemove(entityType, entityId) {
             keep[0].isPinned = false;
             entities.push(keep[0])
             _save(entityType, entities)
+            return entities
+
         })
 }
 

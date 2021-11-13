@@ -11,6 +11,7 @@ export const keepService = {
   pinRemove,
   duplicate,
   saveAfterUserInput,
+  saveKeeps,
 };
 
 const KEEP_KEY = "keepsDB";
@@ -19,22 +20,29 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
   {
     id: "n101",
     type: "note-txt",
+    label:null,
     isPinned: true,
     info: { txt: "Fullstack Me Baby!" },
+    style:{
+      backgroundColor:"#1f9f9a",
+      fontFamily:'Arial, Helvetica, sans-serif'
+    }
   },
   {
     id: "n102",
     type: "note-img",
+    label:null,
     info: {
       url: "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
       title: "Bobi and Me",
     },
     isPinned: false,
-    style: { backgroundColor: "#00d" },
+    style: { backgroundColor: "#1f9f9a", fontFamily: 'Arial, Helvetica, sans-serif' },
   },
   {
     id: "n103",
     type: "note-todos",
+    label:"Work",
     info: {
       label: "Get my stuff together",
       todos: [
@@ -42,17 +50,22 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [
         { txt: "Coding power", doneAt: 187111111 },
       ],
     },
+    style:{
+      backgroundColor:"#1f9f9a",
+      fontFamily:'Arial, Helvetica, sans-serif'
+    },
     isPinned: false,
   },
   {
     id: "n104",
     type: "note-vid",
+    label:'Critical',
     info: {
       url: "https://www.youtube.com/embed/MnuwI7G_huw",
       title: "Latte and Me",
     },
     isPinned: false,
-    style: { backgroundColor: "#00d" },
+    style: { backgroundColor: "#1f9f9a",fontFamily:'Arial, Helvetica, sans-serif'},
   },
 ];
 _save();
@@ -97,6 +110,11 @@ function saveReview(book) {
 function keepById(id) {
   return storageService.get(KEEP_KEY, id);
 }
+function saveKeeps(keeps) {
+  gKeeps=keeps
+  utilService.saveToStorage(KEEP_KEY, gKeeps);
+}
+
 function _save() {
   utilService.saveToStorage(KEEP_KEY, gKeeps);
 }

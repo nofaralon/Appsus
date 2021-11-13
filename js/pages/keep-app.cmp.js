@@ -9,7 +9,7 @@ export default {
     <div>
         <keep-filter @filtered="setFilter"/>
         <add-keep @added="addKeep"/>
-        <keep-list :keeps="keepsToShow" @added="addKeep" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
+        <keep-list :keeps="keepsToShow" @save="saveKeeps" @added="addKeep" @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>
     </div>
     `,
   data() {
@@ -20,14 +20,18 @@ export default {
     };
   },
   created() {
-    this.loadKeeps();
+    this.loadKeeps()
   },
   methods: {
+    saveKeeps(keep){
+      console.log(keep);
+      keepService.saveKeeps(this.keeps)
+      this.loadKeeps()
+    },
     addKeep(keep){
       keepService.addKeep(keep)
       .then((msg)=>{
         this.loadKeeps()
-        console.log(msg);
         eventBus.$emit('showMsg', msg);
       })
 
@@ -35,34 +39,38 @@ export default {
     loadKeeps() {
       keepService.query().then((keeps) => {
         this.keeps = keeps;
-        console.log(this.keeps);
+        return this.keeps
       });
     },
     pinKeep(id){
         keepService.pinKeep(id)
-        .then(()=>{this.loadKeeps()
+        .then(()=>{
+          this.loadKeeps()
           keepService.saveAfterUserInput()
           const msg = {
-            txt: 'Added the pin',
+            txt: 'Pin added',
             type: 'success'
         };
         eventBus.$emit('showMsg', msg);
+        
         })
     },
     removePin(id){
         keepService.pinRemove(id)
-        .then(()=>{this.loadKeeps()
+        .then(()=>{
+          this.loadKeeps()
           keepService.saveAfterUserInput()
           const msg = {
             txt: 'Pin removed',
             type: 'success'
         };
-        eventBus.$emit('showMsg', msg);         
+        eventBus.$emit('showMsg', msg);
         })
     },
     duplicatePin(id){
         keepService.duplicate(id)
-        .then(()=>{this.loadKeeps()
+        .then(()=>{
+          this.loadKeeps()
           keepService.saveAfterUserInput()
           const msg = {
             txt: 'Keep duplicated',
@@ -76,9 +84,9 @@ export default {
     },
     removeKeep(id){
         keepService.removeKeep(id)
-        .then(()=>{this.loadKeeps()
+        .then(()=>{
+          this.loadKeeps()
           keepService.saveAfterUserInput()
-          console.log('hi');
           const msg = {
             txt: 'Keep removed',
             type: 'success'
@@ -111,7 +119,7 @@ export default {
         if(todos.length){
             return keep
         }else{
-            return keep.info.label.toLowerCase().includes(txtStr);
+            return keep.info.headline.toLowerCase().includes(txtStr);
         }
           } else {
             const todos = keep.info.todos.filter(todo => {
@@ -120,7 +128,7 @@ export default {
             if(todos.length){
                 return keep
             }else{
-                return (keep.type.toLowerCase().includes(tagStr) && keep.info.label.toLowerCase().includes(txtStr));
+                return (keep.type.toLowerCase().includes(tagStr) && keep.info.headline.toLowerCase().includes(txtStr));
             }
           }
         } else if (txtStr.length && keep.info.txt) {

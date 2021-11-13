@@ -2,25 +2,23 @@ export default{
     props:['keep'],
     template:`
    <div class="note note-txt">
-    <p @click="editTxt">{{info}}</p>
+    <p @click="editTxt">{{keep.info.txt}}</p>
         <form @submit.prevent="editTxt">
-            <input v-show="isEdit" v-model="info">
+            <input v-show="isEdit" v-model="keep.info.txt">
         </form>
    </div>
    `,
    data(){
        return{
-           info:null,
-           style:null,
            isEdit:false,
        }
    },
    created(){
-    this.info=this.keep.info.txt
    },
    methods:{
     editTxt(){
         this.isEdit=!this.isEdit;
+        this.$emit('save')
     }
-   }
+   },
 }

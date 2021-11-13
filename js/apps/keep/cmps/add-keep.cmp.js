@@ -16,6 +16,11 @@ export default {
     <form v-if="isText" @submit.prevent="addKeep">
         <input class="add-input upper" type="text" placeholder="Add a note" v-model="keep.info.txt">
         <br>
+        <div class="flex center">
+      <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
+      <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
+    </div>
+    <br>
     <button class="add-keep-btn">Add</button>
 </form>        
 
@@ -24,6 +29,11 @@ export default {
     <br>
     <input class="add-input" type="text" placeholder="image url" v-model="keep.info.url">
     <br>
+    <div class="flex center">
+      <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
+      <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
+    </div>
+    <br>
     <button class="add-keep-btn">Add</button>        
     </form> 
         <form v-if="isVideo" @submit.prevent="addKeep">
@@ -31,13 +41,23 @@ export default {
             <br>
             <input class="add-input" type="text" placeholder="video url" v-model="keep.info.url"> 
             <br>
+            <div class="flex center">
+      <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
+      <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
+    </div>
+            <br>
             <button class="add-keep-btn">Add</button>                        
         </form> 
         <form v-if="isTodos" @submit.prevent="addKeep">
-            <input class="add-input upper" type="text" placeholder="label" v-model="keep.info.label">
+            <input class="add-input upper" type="text" placeholder="list label" v-model="keep.info.headline">
             <br>
             <!-- <input type='text' v-model="keep.info.todos" placeholder="Enter comma separated list"> -->
             <textarea class="add-input" v-model="keep.info.todos" placeholder="Enter comma separated list"></textarea>
+            <br>
+            <div class="flex center">
+      <button type="button" @click="setLabel('Critical')" class="Critical">Critical</button><button type="button" @click="setLabel('Family')" class="Family">Family</button><button type="button" @click="setLabel('Work')" class="Work">Work</button><button type="button" @click="setLabel('Friends')" class="Friends">Friends</button> 
+      <button type="button" @click="setLabel('Spam')" class="Spam">Spam</button> <button type="button" @click="setLabel('Memories')" class="Memories">Memories</button> <button type="button" @click="setLabel('Romantic')" class="Romantic">Romantic</button> 
+    </div>
             <br>
             <button class="add-keep-btn">Add</button>                        
         </form> 
@@ -51,53 +71,56 @@ export default {
       isTodos: false,
       isVideo: false,
       isImg: false,
-      todos:null,
+      todos: null,
+      label: null,
       keep: {
-        info: {
-        },
-        isPinned:false
-        
+        info: {},
+      isPinned: false,
+      style:{
+        backgroundColor:"#2f599d",
+        fontFamily:'Arial, Helvetica, sans-serif'
+      }
       },
     };
   },
   methods: {
     addKeep() {
+      console.log(this.keep);
       this.keep.id = utilService.makeId();
-      if(this.isText){
-          this.keep.type = "note-txt";
-      }else if(this.isTodos){
-          this.keep.type = "note-todos";
-          console.log(this.keep.info.todos.indexOf(',')!==-1);
-          if(this.keep.info.todos.indexOf(',')!==-1){
-            this.keep.info.todos=this.keep.info.todos.split(',')
-            this.keep.info.todos=this.keep.info.todos.map(todo=>{
-                var txt={
-                   txt:todo,
-                   doneAt:null
-               }
-               return txt
-           })
-          }else{
-            console.log(this.keep.info.todos);
-            const str=this.keep.info.todos
-            this.keep.info.todos={
-              txt:str,
-              doneAt:null
-            }
-          }
-            // this.keep.info.todos.txt=str
-      }else if(this.isImg){
+      this.keep.label = this.label;
+      if (this.isText) {
+        this.keep.type = "note-txt";
+      } else if (this.isTodos) {
+        this.keep.type = "note-todos";
+        if (this.keep.info.todos.indexOf(",") !== -1) {
+          this.keep.info.todos = this.keep.info.todos.split(",");
+          this.keep.info.todos = this.keep.info.todos.map((todo) => {
+            var txt = {
+              txt: todo,
+              doneAt: null,
+            };
+            return txt;
+          });
+        } else {
+          const str = this.keep.info.todos;
+          this.keep.info.todos = [];
+          this.keep.info.todos.push({
+            txt: str,
+            doneAt: null,
+          });
+        }
+        // this.keep.info.todos.txt=str
+      } else if (this.isImg) {
         this.keep.type = "note-img";
-    }else{
+      } else {
         this.keep.type = "note-vid";
-    }
+      }
       // const msg = {
       //     txt: 'keep added.',
       //     type: 'success',
       // };
       // eventBus.$emit('showMsg', msg)
-      console.log(this.keep);
-      this.$emit('added',this.keep);
+      this.$emit("added", this.keep);
       this.clear();
     },
     on() {
@@ -109,12 +132,17 @@ export default {
       this.isVideo = false;
       this.isImg = false;
     },
-    clear(){
-        this.keep = {
-            info: {
-                todos:""
-                },
-        }
+    clear() {
+      this.keep = {
+        info: {
+          todos: "",
+        },
+        isPinned: false,
+      style:{
+        backgroundColor:"#2f599d",
+        fontFamily:'Arial, Helvetica, sans-serif'
+      }
+      };
     },
 
     setTxt() {
@@ -122,16 +150,20 @@ export default {
       this.isText = true;
     },
     setImg() {
-        this.setFalse();
+      this.setFalse();
       this.isImg = true;
     },
     setVideo() {
-        this.setFalse();
+      this.setFalse();
       this.isVideo = true;
     },
     setTodos() {
-        this.setFalse();
+      this.setFalse();
       this.isTodos = true;
+    },
+    setLabel(label) {
+      this.label = null;
+      this.label = label;
     },
   },
   components: {

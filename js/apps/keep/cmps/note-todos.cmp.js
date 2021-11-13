@@ -1,16 +1,15 @@
-import todoItem from "./todo-item.cmp.js"
 export default{
     props:['keep'],
     template:`
    <div class="todos-lists">
        <label class="todos-label" @click="editTxt">
-           {{label}}
+           {{keep.info.headline}}
         </label>
            <form @submit.prevent="editTxt">
-               <input v-show="isEdit" v-model="label">
+               <input v-show="isEdit" v-model="keep.info.headline">
             </form>
             <ul>
-                <li v-for="todo in todos" class="todos" :key="todo.id">
+                <li v-for="todo in keep.info.todos" class="todos" :key="todo.id">
                     <input type="checkbox" @change="completedTask(todo)" :checked="todo.doneAt"> 
                     <span :class="{done : todo.doneAt}" @click="editTxt">{{todo.txt}} </span>
                     <form @submit.prevent="editTxt">
@@ -30,34 +29,27 @@ export default{
                 txt:'',
                 doneAt:null
             },
-            style:null,
             isEdit:false,
         }
     },
-   created(){
-    this.style=this.keep.style || null        
-    this.label=this.keep.info.label || null        
-    this.todos=this.keep.info.todos || null           
-   },
    methods:{
     editTxt(){
         this.isEdit=!this.isEdit;
+        this.$emit('save')
     },
     completedTask: function(todo){
-        console.log(todo.doneAt);
         todo.doneAt=!todo.doneAt
+        this.$emit('save')
     },
     addTodo(){
-        console.log(this.todo);
         this.keep.info.todos.push(JSON.parse(JSON.stringify(this.todo)))
         this.todo={
             txt:'',
             doneAt:null
         }
+        this.$emit('save')
     }
     
 },
-components:{
-    todoItem,
-}
+
 }

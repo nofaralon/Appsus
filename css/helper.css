@@ -6,7 +6,34 @@
     justify-content: space-between;
 }
 
+.center{
+    justify-content: center;
+}
+
 .main-layout {
     max-width: 1000px;
     margin: 0 auto;
+}
+
+/* labels */
+.Critical{
+    background-color:rgb(245, 133, 133);
+}
+.Family{
+    background-color:rgb(90, 165, 240);
+}
+.Work{
+    background-color:rgb(74, 201, 74);
+}
+.Friends{
+    background-color:rgb(247, 243, 92);
+}
+.Spam{
+    background-color:rgb(249, 195, 96);
+}
+.Memories{
+    background-color:rgb(248, 151, 248);
+}
+.Romantic{
+    background-color:rgb(20, 175, 190);
 }

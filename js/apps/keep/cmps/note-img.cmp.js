@@ -1,11 +1,11 @@
 export default{
     props:['keep'],
     template:`
-   <div class="note note-img" :style="style">
-    <h3 @click="editTxt">{{info.title}}</h3>
+   <div class="note note-img">
+    <h3 @click="editTxt">{{keep.info.title}}</h3>
        <div v-show="isEdit" class="text-editor">
             <form @submit.prevent="editTxt">
-                <input v-model="info.title">
+                <input v-model="keep.info.title">
             </form>
        </div>
     
@@ -15,12 +15,10 @@ export default{
      data(){
         return{
             info:null,
-            style:null,
             isEdit:false,
         }
     },
     created(){
-        this.style=this.keep.style     
         this.info={
             title:this.keep.info.title,
             url: this.keep.info.url
@@ -28,7 +26,11 @@ export default{
     },
     methods:{
         editTxt(){
+            this.$emit('save',this.keep)
+            console.log(this.keep);
             this.isEdit=!this.isEdit;
-        }
+        },
+        
+
     },
 }
