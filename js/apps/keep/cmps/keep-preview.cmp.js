@@ -29,30 +29,30 @@ export default {
         this.cmpType=this.keep.type        
         if(this.keep.label){
             if(this.keep.label==='Critical'){
-                this.keep.style.backgroundColor='#f58585' 
+                this.keep.style.backgroundColor='#f5b9b9' 
                 this.$emit('save')
             }else if(this.keep.label==='Family'){
-                this.keep.style.backgroundColor='#5aa5f0' 
+                this.keep.style.backgroundColor='#8cc2f8' 
                 this.$emit('save')
 
             }else if(this.keep.label==='Work'){
-                this.keep.style.backgroundColor='#4ac94a' 
+                this.keep.style.backgroundColor='#93e493' 
                 this.$emit('save')
 
             }else if(this.keep.label==='Friends'){
-                this.keep.style.backgroundColor='#f7f35c' 
+                this.keep.style.backgroundColor='#fffdb5' 
                 this.$emit('save')
 
             }else if(this.keep.label==='Spam'){
-                this.keep.style.backgroundColor='#f9c360' 
+                this.keep.style.backgroundColor='#fde3b1' 
                 this.$emit('save')
 
             }else if(this.keep.label==='Memories'){
-                this.keep.style.backgroundColor='#f897f8' 
+                this.keep.style.backgroundColor='#f8c6e9' 
                 this.$emit('save')
 
             }else if(this.keep.label==='Romantic'){
-                this.keep.style.backgroundColor='#14afbe' 
+                this.keep.style.backgroundColor='#8ae7f0' 
                 this.$emit('save')
 
             }

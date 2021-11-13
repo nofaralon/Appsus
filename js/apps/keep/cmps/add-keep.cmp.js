@@ -77,7 +77,7 @@ export default {
                 info: {},
                 isPinned: false,
                 style: {
-                    backgroundColor: "#2f599d",
+                    backgroundColor: "#32dce6",
                     fontFamily: 'Arial, Helvetica, sans-serif'
                 }
             },
@@ -132,7 +132,7 @@ export default {
                 },
                 isPinned: false,
                 style: {
-                    backgroundColor: "#2f599d",
+                    backgroundColor: "#32dce6",
                     fontFamily: 'Arial, Helvetica, sans-serif'
                 }
             };
