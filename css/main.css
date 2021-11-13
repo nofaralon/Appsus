@@ -1,7 +1,13 @@
-@import "../css/apps/keep/keep.css";
-@import "../css/apps/mail/mail.css";
-@import "../css/apps/book/book.css";
-@import "../css/helper.css";
+@import "./apps/keep/keep.css";
+@import "./apps/book/book.css";
+@import "./apps/mail/mail.css";
+@import "./helper.css";
+
+/* @import "/css/apps/keep/keep.css";
+@import "/css/apps/mail/mail.css";
+@import "/css/apps/book/book.css";
+@import "/css/helper.css"; */
+
 * {
     box-sizing: border-box;
 }
