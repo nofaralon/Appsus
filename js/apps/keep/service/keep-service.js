@@ -70,21 +70,12 @@ var gKeeps = utilService.loadFromStorage(KEEP_KEY) || [{
 _save();
 
 function addKeep(keepToAdd) {
-<<<<<<< HEAD
   gKeeps.push(keepToAdd);
   _save();
   return Promise.resolve({
     txt: 'Keep added',
     type: 'success'
 })
-=======
-    gKeeps.push(keepToAdd);
-    _save();
-    return Promise.resolve({
-        txt: 'Added the pin',
-        type: 'success'
-    })
->>>>>>> aa7f1ac7f66642552089d3b296715cf61e8b3ea7
 }
 
 function duplicate(id) {
