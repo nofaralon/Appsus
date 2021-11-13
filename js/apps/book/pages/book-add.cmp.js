@@ -4,7 +4,7 @@ import googleList from '../cmps/google-list.cmp.js'
 
 export default {
     template: `
-        <div class="book-add">
+        <div class="book-add main-height">
         
         <form @submit.prevent= "search">
             <h3>Search for a new book</h3>

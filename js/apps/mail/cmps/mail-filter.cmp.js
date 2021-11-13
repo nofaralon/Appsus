@@ -1,9 +1,9 @@
 export default {
     template: `
         <div class="mail-filter">
-            <label>Search: 
-                <input @input="filter" v-model="filterBy.subject" type="search" >
-            </label>
+            
+             <input @input="filter" v-model="filterBy.subject" type="search" placeholder=" 🔍 Search mail" >
+           
             <select @change="filter" v-model="filterBy.isRead">
                 <option value= "all" >All</option>
                 <option value= "true" >Read</option>

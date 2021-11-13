@@ -13,6 +13,8 @@ html {
 body {
     height: 100%;
     margin: 0;
+    color: rgb(75, 74, 74);
+    background-color: rgb(255, 255, 249);
 }
 
 h3,
@@ -20,27 +22,47 @@ p {
     margin: 0;
 }
 
+.background {
+    height: 800px;
+}
+
 
 /* header */
 
 .app-header {
-    background-color: rgb(145, 147, 148);
+    background-color: rgb(243, 187, 2);
 }
 
 .haeder-container {
-    font-size: 18px;
+    background-color: rgb(243, 187, 2);
+    font-size: 20px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    color: aliceblue;
+}
+
+.haeder-container nav,
+.logo {
+    background-color: rgb(243, 187, 2);
 }
 
 .app-header a {
-    color: aliceblue;
+    background-color: rgb(243, 187, 2);
+    color: rgb(75, 74, 74);
+    text-decoration: none;
 }
 
+.main-haeder {
+    background-color: rgb(243, 187, 2);
+}
+
+
+/* .router-link-exact-active {
+    color: gold
+} */
+
 .app-header a:hover {
-    color: rgb(142, 196, 240);
+    color: rgb(255, 251, 251);
 }
 
 .logo {
@@ -52,9 +74,13 @@ p {
 
 .app-footer {
     color: aliceblue;
-    padding: 10px;
-    background-color: rgb(145, 147, 148);
+    padding: 12px;
+    background-color: rgb(243, 187, 2);
     text-align: center;
+}
+
+.footer-container p {
+    background-color: rgb(243, 187, 2);
 }
 
 .apps {
@@ -84,4 +110,8 @@ p {
 .error {
     border: 2px solid red;
     color: red;
+}
+
+.main-height {
+    height: 88vh;
 }

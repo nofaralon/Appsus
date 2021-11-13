@@ -10,13 +10,13 @@ export default {
                 <img class="book-img" :src="book.thumbnail" > 
                 </div>
                 <div class="main-details">
-                    <h3>Book Details:</h3>
+                    <h3>Book Details </h3>
                     <p> Title -  {{book.title}}  </p>
                     <p> Page Count - {{pageCount}} </p>
                     <p> Published Date - {{PublishedDate}}</p>
                     <p> Price -  <span :class="counterStyle"> {{price}} </span> </p>
-                    <img class="sale" v-if="book.listPrice.isOnSale" src="img/sale1.png" >
-                    <div> Description - 
+                    <img class="sale" v-if="book.listPrice.isOnSale" src="../../../../images/sale1.png" >
+                    <div> Description -
                         <span>{{txt2}}</span>
                         <a class="a-details" v-if="book.description.length > 100" @click="activateReadMore" > {{readingDisplay}}</a>
                     </div>
