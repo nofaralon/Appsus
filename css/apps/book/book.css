@@ -29,6 +29,7 @@
 .book-filter input {
     border: none;
     background-color: rgba(243, 187, 2, 0.658);
+    height: 30px;
 }
 
 
@@ -116,6 +117,7 @@
 }
 
 .main-details {
+    position: relative;
     flex-grow: 1;
     padding-inline-start: 50px;
 }
@@ -123,9 +125,9 @@
 .sale {
     position: absolute;
     height: 100px;
-    width: 100px;
-    right: 120px;
-    top: 120px;
+    width: 102px;
+    right: -92px;
+    top: -59px;
 }
 
 td,
@@ -159,7 +161,7 @@ th {
     flex-direction: column;
     width: 400px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 70px;
     font-size: 20px;
     padding: 20px;
     border: 1px solid black;
@@ -208,4 +210,43 @@ th {
     margin-left: 5px;
     padding: 5px;
     height: 20px;
+}
+
+
+/* RESPONSIVITY */
+
+
+/* LARGE */
+
+@media (max-width: 1110px) {}
+
+
+/* MEDIUM */
+
+@media (max-width: 840px) {
+    .details-container {
+        flex-direction: column;
+    }
+    .img-container,
+    .link-container {
+        text-align: center;
+    }
+    .book-details {
+        overflow: auto;
+    }
+    .sale {
+        height: 62px;
+        width: 83px;
+        right: -40px;
+        top: -7px;
+    }
+}
+
+
+/* SMALL */
+
+@media (max-width: 600px) {
+    .book-filter input:not(:first-child) {
+        width: 70px;
+    }
 }

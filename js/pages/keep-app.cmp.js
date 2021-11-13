@@ -6,7 +6,7 @@ import { eventBus } from "../service/event-bus-service.js";
 
 export default {
     template: `
-    <div class="keep-app main-height">
+    <div class="keep-app main-layout">
         <add-keep @added="addKeep"/>
         <keep-filter @filtered="setFilter"/>
         <keep-list :keeps="keepsToShow" @save="saveKeeps"  @remove="removeKeep" @pin="pinKeep" @unpin="removePin" @duplicate="duplicatePin"/>

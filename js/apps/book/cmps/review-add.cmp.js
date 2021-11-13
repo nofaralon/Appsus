@@ -18,7 +18,7 @@ export default {
             <label>  Date picker: </label>
             <input v-model="review.date" type="date">
             <label>  Review:</label>
-            <input v-model="review.txt" type="text">
+            <textarea  v-model="review.txt" cols="30" rows="10"></textarea>
             <button class="save-btn" >Save</button>
         </form>
     </section>

@@ -5,7 +5,17 @@
 .keep-filter {
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin: 10px 0;
+}
+
+.keep-filter input {
+    border: none;
+    background-color: rgba(243, 187, 2, 0.623);
+    height: 30px;
+}
+
+path {
+    fill: whitesmoke;
 }
 
 .add-keep-container {
@@ -16,7 +26,7 @@
     padding: 10px;
     position: relative;
     text-align: center;
-    width: 500px;
+    max-width: 500px;
     margin: auto;
     margin-top: 15px;
     /* background-color: rgba(243, 187, 2); */
@@ -57,12 +67,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fill, 80px);
-    gap: 2px;
+    gap: 10px;
     grid-auto-flow: dense;
-    /* display: flex;
-    flex-wrap: wrap;
-    
-    flex-flow: wrap; */
+}
+
+.keep-list>ul {
+    padding: 0;
+    list-style-type: none;
 }
 
 .keep-img {
@@ -94,7 +105,7 @@
 }
 
 .add-input {
-    width: 395px;
+    max-width: 395px;
 }
 
 .added-todo-input {
@@ -127,6 +138,10 @@
     justify-content: space-around;
 }
 
+.funcs-container path {
+    fill: whitesmoke
+}
+
 .svg-inline--fa {
     height: 25px;
     width: 25px;
@@ -141,7 +156,7 @@
     text-align: center;
 }
 
-.youtube-player{
+.youtube-player {
     padding: 0 5px;
     border: none;
     max-height: 100px;
@@ -180,7 +195,7 @@
 }
 
 .keep-preview-container>section {
-    border: solid 1px black;
+    /* border: solid 1px black; */
     border-radius: 5px;
 }
 
@@ -208,7 +223,7 @@
 /* pinned color */
 
 .ylw {
-    fill: rgb(252, 252, 10);
+    fill: red!important;
 }
 
 
@@ -216,4 +231,26 @@
 
 .done {
     text-decoration: line-through;
+}
+
+
+/* RESPONSIVITY */
+
+
+/* LARGE */
+
+@media (max-width: 1110px) {}
+
+
+/* MEDIUM */
+
+@media (max-width: 840px) {}
+
+
+/* SMALL */
+
+@media (max-width: 600px) {
+    .label-container button {
+        padding: 3px;
+    }
 }

@@ -6,7 +6,7 @@ import { eventBus } from '../../../service/event-bus-service.js';
 
 export default {
     template: `
-    <section v-if="mail" class="mail-details main-layout">
+    <section v-if="mail" class="mail-details main-layout main-height">
         <div class="goToList">
 
             <button @click="goToList" > ⬅ Go Back</button>

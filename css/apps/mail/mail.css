@@ -299,3 +299,53 @@ path {
     display: flex;
     justify-content: end;
 }
+
+
+/* RESPONSIVITY */
+
+
+/* LARGE */
+
+@media (max-width: 1110px) {}
+
+
+/* MEDIUM */
+
+@media (max-width: 840px) {}
+
+
+/* SMALL */
+
+@media (max-width: 600px) {
+    .side-bar {
+        position: absolute;
+        z-index: 1;
+        background-color: rgba(228, 228, 228, 0.897);
+        top: -11px;
+        display: flex;
+        flex-direction: column;
+    }
+    .mail-app-container {
+        position: relative;
+    }
+    .hamburg {
+        position: absolute;
+        z-index: 2;
+        top: -34px;
+    }
+    .mail-side-bar {
+        width: 0px;
+    }
+    .mail-list {
+        padding-inline-start: 0px;
+    }
+    .add-mail-btn img {
+        object-fit: cover;
+    }
+    .add-mail-btn {
+        width: 157px;
+    }
+    .filters-container {
+        flex-direction: column;
+    }
+}

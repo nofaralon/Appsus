@@ -45,3 +45,34 @@
 .Romantic {
     background-color: rgb(138, 231, 240);
 }
+
+
+/* RESPONSIVITY */
+
+
+/* LARGE */
+
+@media (max-width: 1110px) {
+    .main-layout {
+        max-width: 800px;
+    }
+}
+
+
+/* MEDIUM */
+
+@media (max-width: 840px) {
+    .main-layout {
+        max-width: 550px;
+    }
+}
+
+
+/* SMALL */
+
+@media (max-width: 600px) {
+    .main-layout {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+}

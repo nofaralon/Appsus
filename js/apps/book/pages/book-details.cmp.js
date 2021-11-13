@@ -4,13 +4,13 @@ import { eventBus } from '../../../service/event-bus-service.js';
 
 export default {
     template: `
-        <section v-if="book" class=" main-layout book-details">
+        <section v-if="book" class=" main-layout book-details main-height">
         <div class="link-container">
                         <router-link :to="nextBook">Next book</router-link>    
                         <router-link :to="previousBook">Previous book</router-link>    
         </div>
             <div class="details-container" v-if="!openAddReview">
-                <div>
+                <div class="img-container">
                 <img class="book-img" :src="book.thumbnail" > 
                 </div>
                 <div class="main-details">

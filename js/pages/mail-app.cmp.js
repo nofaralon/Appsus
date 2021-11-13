@@ -72,7 +72,7 @@ export default {
                 .then(() => {
                     this.loadMails()
                     const msg = {
-                        txt: 'you mail sent succesfully',
+                        txt: 'your mail was sent succesfully',
                         type: 'success'
                     };
                     eventBus.$emit('showMsg', msg);
@@ -92,7 +92,7 @@ export default {
                     console.log(mail);
                     this.loadMails()
                     const msg = {
-                        txt: 'you mail move to recycle bin',
+                        txt: 'Mail moved to Trash',
                         type: 'success'
                     };
                     eventBus.$emit('showMsg', msg);
@@ -112,7 +112,7 @@ export default {
                     this.loadMails()
                     if (!mail.isStared) return
                     const msg = {
-                        txt: 'you mail stared',
+                        txt: 'Mail starred',
                         type: 'success'
                     };
                     eventBus.$emit('showMsg', msg);
@@ -142,7 +142,7 @@ export default {
                 this.taggedMails = this.mails.filter(mail => {
                     return !mail.isRemoved
                 })
-            } else if (this.sideBar === 'stared') {
+            } else if (this.sideBar === 'starred') {
                 this.taggedMails = this.mails.filter(mail => {
                     return mail.isStared
                 })
@@ -189,8 +189,6 @@ export default {
         mailsToShow() {
             var sideBar = this.sideBar
 
-            // var taggedMails = search()
-            // console.log('taggedMails', taggedMails);
             if (!this.filterBy) return this.taggedMails;
 
             const searchStr = this.filterBy.subject.toLowerCase();
